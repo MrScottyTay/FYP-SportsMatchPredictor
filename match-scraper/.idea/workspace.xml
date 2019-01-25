@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8443ed66-ffe2-4201-8de6-659227c5d8d4" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="258" lean-forward="true" selection-start-line="258" selection-end-line="258" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nba-17-18-stats.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nba-17-18-stats.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="results.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1309">
+              <caret line="70" column="6618" selection-start-line="70" selection-start-column="6618" selection-end-line="70" selection-end-column="6618" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/match_scraper/core.clj" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="300" />
+    <option name="y" value="-23" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="match-scraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match-scraper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match-scraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match-scraper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match-scraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match-scraper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="match_scraper" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/dev/FYP-SportsMatchPredictor/match-scraper/project.clj" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="ReplState" timestamp="1548420386576">{:repl-history {:ide [], :local [{:command &quot;(parse-name-table name-table-raw)&quot;, :offset 33, :ns &quot;match-scraper.core&quot;} {:command &quot;name-table-raw&quot;, :offset 14, :ns &quot;match-scraper.core&quot;} {:command &quot;tables&quot;, :offset 6, :ns &quot;match-scraper.core&quot;} {:command &quot;(first tables)&quot;, :offset 14, :ns &quot;match-scraper.core&quot;} {:command &quot;(parse-name-table (first tables))&quot;, :offset 33, :ns &quot;match-scraper.core&quot;} {:command &quot;(def heads (parse-heads (first tables)))&quot;, :offset 40, :ns &quot;match-scraper.core&quot;} {:command &quot;(def rows (parse-rows (first tables)))&quot;, :offset 38, :ns &quot;match-scraper.core&quot;} {:command &quot;rows&quot;, :offset 4, :ns &quot;match-scraper.core&quot;} {:command &quot;(first rows)&quot;, :offset 12, :ns &quot;match-scraper.core&quot;} {:command &quot;(count (first rows))&quot;, :offset 20, :ns &quot;match-scraper.core&quot;} {:command &quot;name-table&quot;, :offset 10, :ns &quot;match-scraper.core&quot;} {:command &quot;(def stats-table (parse-name-table (second tables)))&quot;, :offset 52, :ns &quot;match-scraper.core&quot;} {:command &quot;stats-table&quot;, :offset 11, :ns &quot;match-scraper.core&quot;} {:command &quot;(stats)&quot;, :offset 7, :ns &quot;match-scraper.core&quot;} {:command &quot;(stats ())&quot;, :offset 10, :ns &quot;match-scraper.core&quot;} {:command &quot;(def html-snippet (html/html-snippet match-stats-data))&quot;, :offset 55, :ns &quot;match-scraper.core&quot;} {:command &quot;html-snippet&quot;, :offset 12, :ns &quot;match-scraper.core&quot;} {:command &quot;(html/select html-snippet [:td#utime])&quot;, :offset 38, :ns &quot;match-scraper.core&quot;} {:command &quot;(:content (html/select html-snippet [:td#utime]))&quot;, :offset 49, :ns &quot;match-scraper.core&quot;} {:command &quot;(first (:content (last (html/select html-snippet [:td#utime]))))&quot;, :offset 64, :ns &quot;match-scraper.core&quot;} {:command &quot;(map :content (html/select html-snippet [:span.scoreboard]))&quot;, :offset 60, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp first :content) (html/select html-snippet [:span.scoreboard]))&quot;, :offset 73, :ns &quot;match-scraper.core&quot;} {:command &quot;(map :content (html/select html-snippet [:span.tname]))&quot;, :offset 55, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp first :content last :content) (html/select html-snippet [:span.tname]))&quot;, :offset 82, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp first :content :content) (html/select html-snippet [:span.tname]))&quot;, :offset 77, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp first :content) (html/select html-snippet [:span.tname]))&quot;, :offset 68, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp :content) (html/select html-snippet [:span.tname]))&quot;, :offset 62, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp (fn [x] (map (comp :content) x)) :content) (html/select html-snippet [:span.tname]))&quot;, :offset 95, :ns &quot;match-scraper.core&quot;} {:command &quot;(clojure.pprint/pprint (map (comp :content) (html/select html-snippet [:span.tname])))&quot;, :offset 86, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp (fn [x] (map (comp second first :content) x)) :content) (html/select html-snippet [:span.tname]))&quot;, :offset 108, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp (fn [x] (map (comp first :content last) x)) :content) (html/select html-snippet [:span.tname]))&quot;, :offset 106, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp (fn [x] (map (comp (fn [x] (filter identity x)) first :content) x)) :content) (html/select html-snippet [:span.tname]))&quot;, :offset 130, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))&quot;, :offset 101, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (fn [x] (filter identity x)) (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname])))&quot;, :offset 136, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp (fn [x] (filter identity x)) clojure.string/trim)\n     (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname])))&quot;, :offset 168, :ns &quot;match-scraper.core&quot;} {:command &quot;(map (comp clojure.string/trim)\n     (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname])))&quot;, :offset 139, :ns &quot;match-scraper.core&quot;} {:command &quot; (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname])))&quot;, :offset 103, :ns &quot;match-scraper.core&quot;} {:command &quot; (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))&quot;, :offset 102, :ns &quot;match-scraper.core&quot;} {:command &quot;(filter identity (flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))))&quot;, :offset 129, :ns &quot;match-scraper.core&quot;} {:command &quot;(map clojure.string/trim (flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))))&quot;, :offset 137, :ns &quot;match-scraper.core&quot;} {:command &quot;(replace (= \&quot; \&quot;) (flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))))&quot;, :offset 129, :ns &quot;match-scraper.core&quot;} {:command &quot;(replace (fn [x ] (= \&quot; \&quot; x)) (flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))))&quot;, :offset 141, :ns &quot;match-scraper.core&quot;} {:command &quot;(replace (fn [x] (= \&quot; \&quot; x)) (flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))))&quot;, :offset 140, :ns &quot;match-scraper.core&quot;} {:command &quot;(flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname]))))&quot;, :offset 112, :ns &quot;match-scraper.core&quot;} {:command &quot;(flatten (map (comp (fn [x] (map (comp first :content) x)) :content) (html/select html-snippet [:span.tname])))&quot;, :offset 111, :ns &quot;match-scraper.core&quot;} {:command &quot;(flatten\n  (map\n    (comp (fn [x] (map (comp first :content) x)) :content)\n    (html/select html-snippet [:span.tname])))&quot;, :offset 121, :ns &quot;match-scraper.core&quot;} {:command &quot;(remove clojure.string/blank? (flatten\n  (map\n    (comp (fn [x] (map (comp first :content) x)) :content)\n    (html/select html-snippet [:span.tname]))))&quot;, :offset 152, :ns &quot;match-scraper.core&quot;} {:command &quot;(remove (fn [x] (= x \&quot;U+A0\&quot;)) (flatten\n  (map\n    (comp (fn [x] (map (comp first :content) x)) :content)\n    (html/select html-snippet [:span.tname]))))&quot;, :offset 152, :ns &quot;match-scraper.core&quot;} {:command &quot;(remove clojure.string/blank? (flatten\n                                                                                                             (map\n                                                                                                               (comp (fn [x] (map (comp first :content) x)) :content)\n                                                                                                               (html/select html-snippet [:span.tname]))))&quot;, :offset 0} {:command &quot;(nth (flatten\n  (map\n    (comp (fn [x] (map (comp first :content) x)) :content)\n    (html/select html-snippet [:span.tname]))) 3)&quot;, :offset 129, :ns &quot;match-scraper.core&quot;} {:command &quot;(nth (flatten\n       (map\n         (comp (fn [x] (map (comp first :content) x)) :content)\n         (html/select html-snippet [:span.tname]))) 2)&quot;, :offset 144, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn parse-int [s]\n  (Integer. (re-find  #\&quot;\\d+\&quot; s )))&quot;, :offset 54, :ns &quot;user&quot;} {:command &quot;(parse-int \&quot;\&quot;)&quot;, :offset 14, :ns &quot;user&quot;} {:command &quot;(parse-int \&quot;1\&quot;)&quot;, :offset 15, :ns &quot;user&quot;} {:command &quot;(parse-int \&quot;1.2\&quot;)&quot;, :offset 17, :ns &quot;user&quot;} {:command &quot;(defn parse-number [str]\n  (let [n (read-string str)]\n    (if (number? n) n nil)))&quot;, :offset 82, :ns &quot;user&quot;} {:command &quot;(parse-number \&quot;2\&quot;)&quot;, :offset 18, :ns &quot;user&quot;} {:command &quot;(parse-number \&quot;2.4\&quot;)&quot;, :offset 20, :ns &quot;user&quot;} {:command &quot;(defn minsec-to-double [minsec]\n  (let [split-minsec (clojure.string/split minsec \&quot;:\&quot;)]\n    (+ (parse-number (first split-minsec)) (/ (parse-number (second split-minsec)) 60))))&quot;, :offset 177, :ns &quot;match-scraper.core&quot;} {:command &quot;(minsec-to-double \&quot;10:30\&quot;)&quot;, :offset 26, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn parse-minsec [minsec]\n  (let [split-minsec (clojure.string/split minsec #\&quot;:\&quot;)]\n    (+ (parse-number (first split-minsec)) (/ (parse-number (second split-minsec)) 60))))\n&quot;, :offset 175, :ns &quot;match-scraper.core&quot;} {:command &quot;(/ 15 60)&quot;, :offset 9, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn parse-minsec [minsec]\n  (let [split-minsec (clojure.string/split minsec #\&quot;:\&quot;)]\n    (float (+ (parse-number (first split-minsec)) (/ (parse-number (second split-minsec)) 60)))))&quot;, :offset 182, :ns &quot;match-scraper.core&quot;} {:command &quot;(parse-minsec \&quot;13:30\&quot;)&quot;, :offset 22, :ns &quot;match-scraper.core&quot;} {:command &quot;(read-string \&quot;02\&quot;)&quot;, :offset 18, :ns &quot;match-scraper.core&quot;} {:command &quot;(read-string \&quot;08\&quot;)&quot;, :offset 18, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn read-fruit [number]\n  (if (= \&quot;02\&quot;) 2 8))&quot;, :offset 46, :ns &quot;match-scraper.core&quot;} {:command &quot;(read-fruit \&quot;02\&quot;)&quot;, :offset 17, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn read-fruit [number]\n  8)&quot;, :offset 30, :ns &quot;match-scraper.core&quot;} {:command &quot;(read-fruit \&quot;08\&quot;)&quot;, :offset 17, :ns &quot;match-scraper.core&quot;} {:command &quot;stats&quot;, :offset 5, :ns &quot;match-scraper.core&quot;} {:command &quot;(def match-urls\n  (build-match-urls nba-match-prefix-url nba-match-player-stats-suffix-url\n                    (get-match-ids (load-all-match-listings nba-17-18-matches-url match-listing-ids))))&quot;, :offset 194, :ns &quot;match-scraper.core&quot;} {:command &quot;(def match-stats-data (map (fn [x] (get-match-stats-html x match-stats-ids)) match-urls))&quot;, :offset 89, :ns &quot;match-scraper.core&quot;} {:command &quot;match-urls&quot;, :offset 10, :ns &quot;match-scraper.core&quot;} {:command &quot;match-stats-data&quot;, :offset 16, :ns &quot;match-scraper.core&quot;} {:command &quot;(def nba-17-18-stats\n  (scrape-all-match-results\n    nba-17-18-matches-url match-listing-ids nba-match-prefix-url nba-match-player-stats-suffix-url match-stats-ids))&quot;, :offset 165, :ns &quot;match-scraper.core&quot;} {:command &quot;(scrape-all-match-results\n  nba-17-18-matches-url match-listing-ids nba-match-prefix-url nba-match-player-stats-suffix-url match-stats-ids)&quot;, :offset 139, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn get-match-stats [match-stats-data]\n  (do (print \&quot;\\n\\n\\n\&quot; match-stats-data)\n      (let [html-snippet (html/html-snippet match-stats-data)\n            stats-table-raw (second (html/select\n                                      (html/select html-snippet [:div#tab-player-statistics-0-statistic])\n                                      [:table]))\n            player-stats (parse-stats-table stats-table-raw)\n            date-time (clojure.string/split (first (:content (last (html/select html-snippet [:td#utime])))) #\&quot; \&quot;)\n            score (map (comp first :content) (html/select html-snippet [:span.scoreboard]))\n            teams (flatten (map\n                             (comp (fn [x] (map (comp first :content) x)) :content)\n                             (html/select html-snippet [:span.tname])))]\n        (map (fn [x] (assoc x\n                       :date (first date-time) :time (second date-time)\n                       :home-score (reformat-stat (first score)) :away-score (reformat-stat (second score))\n                       :home-team (second teams) :away-team (nth teams 2))) (expand-player-stats player-stats)))))&quot;, :offset 1128, :ns &quot;match-scraper.core&quot;} {:command &quot;(defn get-match-stats [match-stats-data]\n  (do (print \&quot;\\n\\n\\n===========================\\n\\n\\n\&quot; match-stats-data)\n      (let [html-snippet (html/html-snippet match-stats-data)\n            stats-table-raw (second (html/select\n                                      (html/select html-snippet [:div#tab-player-statistics-0-statistic])\n                                      [:table]))\n            player-stats (parse-stats-table stats-table-raw)\n            date-time (clojure.string/split (first (:content (last (html/select html-snippet [:td#utime])))) #\&quot; \&quot;)\n            score (map (comp first :content) (html/select html-snippet [:span.scoreboard]))\n            teams (flatten (map\n                             (comp (fn [x] (map (comp first :content) x)) :content)\n                             (html/select html-snippet [:span.tname])))]\n        (map (fn [x] (assoc x\n                       :date (first date-time) :time (second date-time)\n                       :home-score (reformat-stat (first score)) :away-score (reformat-stat (second score))\n                       :home-team (second teams) :away-team (nth teams 2))) (expand-player-stats player-stats)))))&quot;, :offset 1161, :ns &quot;match-scraper.core&quot;} {:command &quot;(map get-match-stats match-stats-data)&quot;, :offset 38, :ns &quot;match-scraper.core&quot;} {:command &quot;nba-17-18-stats&quot;, :offset 15, :ns &quot;match-scraper.core&quot;} {:command &quot;(+ 2 2)&quot;, :offset 7, :ns &quot;match-scraper.core&quot;} {:command &quot;(.availableProcessors (Runtime/getRuntime))&quot;, :offset 43, :ns &quot;user&quot;} {:command &quot;(partition 5 nil nil (range 30))&quot;, :offset 32, :ns &quot;user&quot;} {:command &quot;(partition 5 (range 30))&quot;, :offset 24, :ns &quot;user&quot;} {:command &quot;(partition 5 (range 31))&quot;, :offset 24, :ns &quot;user&quot;} {:command &quot;(partition 5 0 [] (range 31))&quot;, :offset 29, :ns &quot;user&quot;} {:command &quot;(partition 5 5 [] (range 32))&quot;, :offset 29, :ns &quot;user&quot;} {:command &quot;(web/chrome)&quot;, :offset 12, :ns &quot;match-scraper.core&quot;} {:command &quot;(def driver (web/chrome))&quot;, :offset 25, :ns &quot;match-scraper.core&quot;} {:command &quot;(web/go driver \&quot;google.co.uk\&quot;)&quot;, :offset 30, :ns &quot;match-scraper.core&quot;} {:command &quot;(web/go driver \&quot;http://google.co.uk\&quot;)&quot;, :offset 37, :ns &quot;match-scraper.core&quot;} {:command &quot;(web/go driver \&quot;http://maps.google.co.uk\&quot;)&quot;, :offset 42, :ns &quot;match-scraper.core&quot;} {:command &quot;(distinct (map keys maps))&quot;, :offset 26, :ns &quot;user&quot;} {:command &quot;(first (distinct (map keys maps)))&quot;, :offset 34, :ns &quot;user&quot;} {:command &quot;(flatten (distinct (map keys maps)))&quot;, :offset 36, :ns &quot;user&quot;} {:command &quot;(def maps '({:a 1 :b 2 :c 3} {:a 2 :b 3 :c 4}))&quot;, :offset 47, :ns &quot;user&quot;} {:command &quot;(distinct (flatten (map keys maps)))&quot;, :offset 36, :ns &quot;user&quot;} {:command &quot;(flatten '(({:a 1 :b 1 :c 1} {:a 2 :b 2 :c 2}) ({:a 3 :b 3 :c 3})))&quot;, :offset 67, :ns &quot;user&quot;} {:command &quot;((fn [x] (let [num (+ x 1)]\n          num)) 2)&quot;, :offset 46, :ns &quot;user&quot;}], :remote []}}</component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="nREPL" type="ClojureREPL" factoryName="Local">
+      <module name="match-scraper" />
+      <setting name="replType" value="1" />
+      <setting name="jvmArgs" value="" />
+      <setting name="parameters" value="" />
+      <setting name="workingDir" value="$PROJECT_DIR$" />
+      <setting name="profiles" value="" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8443ed66-ffe2-4201-8de6-659227c5d8d4" name="Default" comment="" />
+      <created>1547913195490</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547913195490</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="7" sideWeight="0.49892932" weight="0.32995737" />
+      <window_info active="true" anchor="right" x="1267" y="269" width="620" height="764" id="REPL" order="3" sideWeight="0.8233405" side_tool="true" visible="true" weight="0.3304904" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Leiningen" order="4" sideWeight="0.17665952" visible="true" weight="0.3304904" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1401919" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="70" column="6618" selection-start-line="70" selection-start-column="6618" selection-end-line="70" selection-end-column="6618" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="70" column="6618" selection-start-line="70" selection-start-column="6618" selection-end-line="70" selection-end-column="6618" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2941">
+          <caret line="173" column="51" lean-forward="true" selection-start-line="173" selection-start-column="51" selection-end-line="173" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="70" column="6618" lean-forward="true" selection-start-line="70" selection-start-column="6618" selection-end-line="70" selection-end-column="6618" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="115" column="99" lean-forward="true" selection-start-line="115" selection-start-column="99" selection-end-line="115" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="70" column="6618" selection-start-line="70" selection-start-column="6618" selection-end-line="70" selection-end-column="6618" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pemfile_cached">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs_err_pid13764.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10443" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nba-17-18-stats.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/match_scraper/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="258" lean-forward="true" selection-start-line="258" selection-end-line="258" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>clojure-1.9.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>match-scraper</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Leiningen: cheshire:5.6.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
