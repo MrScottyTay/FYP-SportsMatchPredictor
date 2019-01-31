@@ -117,7 +117,8 @@
                          (comp (fn [x] (map (comp first :content) x)) :content)
                          (html/select html-snippet [:span.tname])))]
     (map (fn [x] (assoc x
-                   :date (first date-time) :time (second date-time)
+                   :date (clojure.string/replace (first date-time) #"[.]" "/")
+                   :time (second date-time)
                    :home-score (reformat-stat (first score)) :away-score (reformat-stat (second score))
                    :home-team (second teams) :away-team (nth teams 2))) (expand-player-stats player-stats))))
 
@@ -261,7 +262,8 @@
 ;; Write to .csv
 
 (defn write-csv [path data]
-  (let [columns (into [] (distinct (flatten (map keys data))))
+  (let [columns [:date :time :home-team :home-score :away-score :away-team
+                 :player :team :pts :ast :reb :min :fg :fga :3p :3pa :ft :fta :or :dr :pf :st :to :bs]
         headers (map name columns)
         rows (mapv #(mapv % columns) data)]
     (with-open [file (clojure.java.io/writer path)]
