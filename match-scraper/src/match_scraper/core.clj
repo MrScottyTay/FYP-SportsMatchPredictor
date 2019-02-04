@@ -9,7 +9,7 @@
 (def nba-match-player-stats-suffix-url "/#player-statistics;0")
 (def match-stats-ids (assoc {} :loading-overlay "preload-all" :player-table "tab-player-statistics-0-statistic"))
 
-(def team-abbrevs ^const (assoc {} :atl "Atlanta Hawks"
+(def team-abbrevs ^:const (assoc {} :atl "Atlanta Hawks"
                                    :bkn "Brooklyn Nets"
                                    :bos "Boston Celtics"
                                    :cha "Charlotte Hornets"

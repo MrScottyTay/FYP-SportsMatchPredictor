@@ -72,6 +72,19 @@
 (def data-keys (keys (first csv-data)))
 
 ;; _____________________________________________________________________________________________________________________
+;; Write .csv file
+
+(def default-columns ^:const
+  [:date :time :home-team :home-score :away-score :away-team
+   :player :team :pts :ast :reb :min :fg :fga :3p :3pa :ft :fta :or :dr :pf :st :to :bs :result])
+
+(defn write-csv [path data columns]
+  (let [headers (map name columns)
+        rows (mapv #(mapv % columns) data)]
+    (with-open [file (clojure.java.io/writer path)]
+      (clojure.data.csv/write-csv file (cons headers rows)))))
+
+;; _____________________________________________________________________________________________________________________
 ;; Ordering Data
 
 (defn group-data-by-player [data]
@@ -127,4 +140,12 @@
 (def prior-averaged-data (dataset-prior-averages player-grouped-data))
 
 ;; _____________________________________________________________________________________________________________________
-;; 
+;; Dataset Modifier 01 - Weighted by minutes played
+
+;; _____________________________________________________________________________________________________________________
+;; Dataset to csv-able data - basic, still separated by players
+
+(defn create-dataset-player-csv-format [player-grouped-data]
+  (sort-by (juxt (fn [x] (string->date-time (:date x))) :min) (flatten (map (fn [x] (second x)) player-grouped-data))))
+
+(def prior-averaged-csv-data (create-dataset-player-csv-format prior-averaged-data))
