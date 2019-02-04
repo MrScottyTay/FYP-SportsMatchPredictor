@@ -3,7 +3,7 @@
             [clj-time.core :as time]))
 
 (def ^:const input-data-path "")
-(def ^:const non-player-stats-columns [:date :time :home-team :away-team :home-score :away-score :player :team])
+(def ^:const non-player-stats-columns [:date :time :home-team :away-team :home-score :away-score :player :team :result])
 
 ;; _____________________________________________________________________________________________________________________
 ;; Helpers
@@ -37,28 +37,37 @@
                         (doall (clojure.data.csv/read-csv reader)))]
     (map (fn [x] (zipmap (map keyword head) x)) lines)))
 
-(declare csv-str->num-partitioned)
+(declare csv-str->type-partitioned)
 
-(defn csv-str->num
+(defn csv-str->type
   ([csv-data]
    (if (< 100 (count csv-data))
-     (csv-str->num-partitioned csv-data)
-     (csv-str->num csv-data (keys (first csv-data)) [])))
+     (csv-str->type-partitioned csv-data)
+     (csv-str->type csv-data (keys (first csv-data)) [])))
   ([rows-waiting columns rows-processed]
    (if (empty? rows-waiting) rows-processed
-     (csv-str->num (rest rows-waiting) columns (conj rows-processed (csv-str->num (first rows-waiting) columns)))))
+     (csv-str->type (rest rows-waiting) columns (conj rows-processed (csv-str->type (first rows-waiting) columns)))))
   ([row columns]
    (if (empty? columns) row
      (let [column (first columns)
            column-data (column row)]
-       (if (numeric? column-data)
-         (csv-str->num (assoc row column (parse-int column-data)) (rest columns))
-         (csv-str->num row (rest columns)))))))
+       (cond
+         (numeric? column-data)
+         (csv-str->type (assoc row column (parse-int column-data)) (rest columns))
 
-(defn csv-str->num-partitioned [csv-data]
-  (flatten (map csv-str->num (partition 100 100 nil csv-data))))
+         (= column-data "TRUE")
+         (csv-str->type (assoc row column true) (rest columns))
 
-(def csv-data (csv-str->num (read-csv "nba-17-18-stats.csv")))
+         (= column-data "FALSE")
+         (csv-str->type (assoc row column false) (rest columns))
+
+         :else
+         (csv-str->type row (rest columns)))))))
+
+(defn csv-str->type-partitioned [csv-data]
+  (flatten (map csv-str->type (partition 100 100 nil csv-data))))
+
+(def csv-data (csv-str->type (read-csv "nba-17-18-stats.csv")))
 
 (def data-keys (keys (first csv-data)))
 

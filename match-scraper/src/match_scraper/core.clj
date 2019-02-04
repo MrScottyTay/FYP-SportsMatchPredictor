@@ -9,6 +9,37 @@
 (def nba-match-player-stats-suffix-url "/#player-statistics;0")
 (def match-stats-ids (assoc {} :loading-overlay "preload-all" :player-table "tab-player-statistics-0-statistic"))
 
+(def team-abbrevs ^const (assoc {} :atl "Atlanta Hawks"
+                                   :bkn "Brooklyn Nets"
+                                   :bos "Boston Celtics"
+                                   :cha "Charlotte Hornets"
+                                   :chi "Chicago Bulls"
+                                   :cle "Cleveland Cavaliers"
+                                   :dal "Dallas Mavericks"
+                                   :den "Denver Nuggets"
+                                   :det "Detroit Pistons"
+                                   :gsw "Golden State Warriors"
+                                   :hou "Houston Rockets"
+                                   :ind "Indiana Pacers"
+                                   :lac "Los Angeles Clippers"
+                                   :lal "Los Angeles Lakers"
+                                   :mem "Memphis Grizzlies"
+                                   :mia "Miami Heat"
+                                   :mil "Milwaukee Bucks"
+                                   :min "Minnesota Timberwolves"
+                                   :nop "New Orleans Pelicans"
+                                   :nyk "New York Knicks"
+                                   :okc "Oklahoma City Thunder"
+                                   :orl "Orlando Magic"
+                                   :phi "Philadelpia 76ers"
+                                   :phx "Phoenix Suns"
+                                   :por "Portland Trail Blazers"
+                                   :sac "Sacramento Kings"
+                                   :sas "San Antonio Spurs"
+                                   :tor "Toronto Raptors"
+                                   :uta "Utah Jazz"
+                                   :was "Washington Wizards"))
+
 ;; _____________________________________________________________________________________________________________________
 ;; Helper functions
 
@@ -42,6 +73,18 @@
 (defn keywordable-name [input]
   (clojure.string/lower-case
      (clojure.string/replace (clojure.string/replace input #"[^a-zA-Z\d\s]" "") " " "-")))
+
+(defn player-team-parse [player-team-abbrev]
+  ((keyword (keywordable-name player-team-abbrev)) team-abbrevs))
+
+(defn get-result [player-team home-team home-score away-score]
+  (let [home-win? (> home-score away-score)
+        player-home? (= player-team home-team)]
+    (cond
+      (and home-win? player-home?) true
+      (and home-win? (not player-home?)) false
+      (and (not home-win?) player-home?) false
+      (and (not home-win?) (not player-home?)) true)))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Collecting URLs for match data
@@ -110,17 +153,24 @@
         stats-table-raw (second (html/select
                  (html/select html-snippet [:div#tab-player-statistics-0-statistic])
                  [:table]))
-        player-stats (parse-stats-table stats-table-raw)
+        player-stats (expand-player-stats (parse-stats-table stats-table-raw))
         date-time (clojure.string/split (first (:content (last (html/select html-snippet [:td#utime])))) #" ")
+        date (clojure.string/replace (first date-time) #"[.]" "/")
+        time (second date-time)
         score (map (comp first :content) (html/select html-snippet [:span.scoreboard]))
+        home-score (reformat-stat (first score))
+        away-score (reformat-stat (second score))
         teams (flatten (map
                          (comp (fn [x] (map (comp first :content) x)) :content)
-                         (html/select html-snippet [:span.tname])))]
-    (map (fn [x] (assoc x
-                   :date (clojure.string/replace (first date-time) #"[.]" "/")
-                   :time (second date-time)
-                   :home-score (reformat-stat (first score)) :away-score (reformat-stat (second score))
-                   :home-team (second teams) :away-team (nth teams 2))) (expand-player-stats player-stats))))
+                         (html/select html-snippet [:span.tname])))
+        home-team (second teams)
+        away-team (nth teams 2)
+        ]
+    (map (fn [x] (assoc x :date date :time time
+                          :home-score home-score :away-score away-score
+                          :home-team home-team :away-team away-team
+                          :result (get-result (:team x) home-team home-score away-score)))
+         player-stats)))
 
 ;; _____________________________________________________________________________________________________________________
 ;;  Parsing player stats table
@@ -157,7 +207,6 @@
 ;; Expanding player stats columns
 
 (declare expand-player-stats-row)
-(declare reformat-stat)
 
 (defn expand-player-stats [stats]
   (map expand-player-stats-row stats))
@@ -172,7 +221,7 @@
               :3pa (reformat-stat (second threeps))
               :ft (reformat-stat (first fts))
               :fta (reformat-stat (second fts))
-              :team (:team stats-row)
+              :team (player-team-parse (:team stats-row))
               :player (:player stats-row)
               :min (reformat-stat (:min stats-row))
               :reb (reformat-stat (:reb stats-row))
@@ -263,7 +312,7 @@
 
 (defn write-csv [path data]
   (let [columns [:date :time :home-team :home-score :away-score :away-team
-                 :player :team :pts :ast :reb :min :fg :fga :3p :3pa :ft :fta :or :dr :pf :st :to :bs]
+                 :player :team :pts :ast :reb :min :fg :fga :3p :3pa :ft :fta :or :dr :pf :st :to :bs :result]
         headers (map name columns)
         rows (mapv #(mapv % columns) data)]
     (with-open [file (clojure.java.io/writer path)]
