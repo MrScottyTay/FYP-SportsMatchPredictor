@@ -5,12 +5,13 @@
 
 (def match-listing-ids (assoc {} :loading-overlay "fs_overlay" :more-results "tournament-page-results-more"))
 (def nba-17-18-matches-url "https://www.scoreboard.com/uk/nba-2017-2018/results/")
+(def nba-16-17-matches-url "https://www.scoreboard.com/uk/nba-2016-2017/results/")
 (def nba-match-prefix-url "https://www.scoreboard.com/uk/match/")
 (def nba-match-player-stats-suffix-url "/#player-statistics;0")
 (def match-stats-ids (assoc {} :loading-overlay "preload-all" :player-table "tab-player-statistics-0-statistic"))
 
 (def team-abbrevs ^:const (assoc {} :atl "Atlanta Hawks"
-                                   :bkn "Brooklyn Nets"
+                                   :bro "Brooklyn Nets"
                                    :bos "Boston Celtics"
                                    :cha "Charlotte Hornets"
                                    :chi "Chicago Bulls"
@@ -29,10 +30,10 @@
                                    :min "Minnesota Timberwolves"
                                    :nop "New Orleans Pelicans"
                                    :nyk "New York Knicks"
-                                   :okc "Oklahoma City Thunder"
+                                   :okl "Oklahoma City Thunder"
                                    :orl "Orlando Magic"
                                    :phi "Philadelpia 76ers"
-                                   :phx "Phoenix Suns"
+                                   :pho "Phoenix Suns"
                                    :por "Portland Trail Blazers"
                                    :sac "Sacramento Kings"
                                    :sas "San Antonio Spurs"
@@ -258,7 +259,7 @@
        data
 
        (>= scrape-count 100)
-       (do (web/stop-driver driver) (partitioned-scrape match-urls match-stats-ids (web/chrome) 0 data))
+       (do (web/stop-driver driver) (web/close-window driver) (partitioned-scrape match-urls match-stats-ids (web/chrome) 0 data))
 
        :else
        (partitioned-scrape (rest match-urls) match-stats-ids driver (inc scrape-count)
@@ -318,7 +319,11 @@
     (with-open [file (clojure.java.io/writer path)]
       (csv/write-csv file (cons headers rows)))))
 
-#_(write-csv "nba-17-18-stats.csv"
+(write-csv "nba-17-18-stats.csv"
            (scrape-all-match-results
              nba-17-18-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+(write-csv "nba-16-17-stats.csv"
+           (scrape-all-match-results
+             nba-16-17-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))

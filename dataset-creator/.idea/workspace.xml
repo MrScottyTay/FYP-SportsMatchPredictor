@@ -15,8 +15,8 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            <state relative-caret-position="501">
+              <caret line="121" column="35" lean-forward="true" selection-start-line="121" selection-start-column="35" selection-end-line="121" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -50,18 +50,19 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="x" value="-44" />
+    <option name="y" value="7" />
+    <option name="width" value="983" />
+    <option name="height" value="1152" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -84,7 +85,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -96,7 +96,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="ReplState" timestamp="1549294764076">{:repl-history {:local [{:command &quot;(distinct (map :team csv-data))&quot;, :offset 31, :ns &quot;dataset-creator.core&quot;} {:command &quot;(def test-data (map (fn [x] (second x)) prior-averaged-data))&quot;, :offset 61, :ns &quot;dataset-creator.core&quot;} {:command &quot;(first test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count (flatten test-data))&quot;, :offset 27, :ns &quot;dataset-creator.core&quot;}]}}</component>
+  <component name="ReplState" timestamp="1550870472551">{:repl-history {:local [{:command &quot;(distinct (map :team csv-data))&quot;, :offset 31, :ns &quot;dataset-creator.core&quot;} {:command &quot;(def test-data (map (fn [x] (second x)) prior-averaged-data))&quot;, :offset 61, :ns &quot;dataset-creator.core&quot;} {:command &quot;(first test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count (flatten test-data))&quot;, :offset 27, :ns &quot;dataset-creator.core&quot;}]}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -121,13 +121,11 @@
     </configuration>
     <configuration name="nREPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <module name="dataset-creator" />
-      <setting name="replType" value="NREPL" />
-      <setting name="execution" value="LEININGEN" />
+      <setting name="replType" value="1" />
       <setting name="jvmArgs" value="" />
       <setting name="parameters" value="" />
       <setting name="workingDir" value="$PROJECT_DIR$" />
       <setting name="profiles" value="" />
-      <setting name="aliases" value="" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -187,7 +185,7 @@
     <option name="totallyTimeSpent" value="4920000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -197,26 +195,26 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="right" id="REPL" order="3" sideWeight="0.79076344" side_tool="true" visible="true" weight="0.3765625" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="right" id="REPL" order="3" sideWeight="0.79122055" side_tool="true" visible="true" weight="0.36673775" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Leiningen" order="3" sideWeight="0.20923656" visible="true" weight="0.3765625" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Leiningen" order="3" sideWeight="0.20877944" visible="true" weight="0.36673775" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1390625" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1401919" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
@@ -228,6 +226,20 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -279,8 +291,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="501">
+          <caret line="121" column="35" lean-forward="true" selection-start-line="121" selection-start-column="35" selection-end-line="121" selection-end-column="35" />
         </state>
       </provider>
     </entry>

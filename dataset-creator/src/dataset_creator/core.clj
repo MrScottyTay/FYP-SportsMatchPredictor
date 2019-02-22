@@ -103,6 +103,28 @@
        (sort-all-players-by-date (assoc data player (sort-by-date (player data))) (rest players))))))
 
 ;; _____________________________________________________________________________________________________________________
+;; Match 0 - Total Averaged stats for previous season
+
+; Gets a players total averages for a total season
+(defn player-total-averages
+  ([input] ; Input data should already be grouped by players
+   (let [players (keys input)
+         first-player (first players)]
+     (player-total-averages first-player (rest players) (keys first-player) input)))
+  ([current-player rest-players columns data]; Iterates through the players
+   (let [player-data (current-player data)
+         output-data (assoc {} :player (:player (first current-player)))]
+     (if (empty? rest-players)
+       (assoc data current-player (player-total-averages player-data columns output-data))
+       (player-total-averages (first rest-players) (rest rest-players) columns
+                              (assoc data current-player (player-total-averages player-data columns output-data))))))
+  ([player-data columns output-data] ; Calculates the total averages for a player
+   (if (empty? columns) output-data
+     (player-total-averages
+       player-data (rest columns)
+       (float ((partial (fn [x] (/ (reduce + x) (count x)))) (map (first columns) player-data)))))))
+
+;; _____________________________________________________________________________________________________________________
 ;; Dataset 01 - Averaged prior stats
 
 (declare prior-averages)
