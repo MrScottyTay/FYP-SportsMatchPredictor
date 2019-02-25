@@ -111,10 +111,10 @@
   ([input] ; Input data should already be grouped by players
    (let [players (keys input)
          first-player (first players)]
-     (player-total-averages first-player (rest players) (keys first-player) input)))
+     (player-total-averages first-player (rest players) (keys ((first (first-player input)) input)) input)))
   ([current-player rest-players columns data]; Iterates through the players
    (let [player-data (current-player data)
-         output-data (assoc {} :player (:player (first current-player)))]
+         output-data (assoc {} :player (:player player-data))]
      (if (empty? rest-players)
        (assoc data current-player (player-total-averages player-data columns output-data))
        (player-total-averages (first rest-players) (rest rest-players) columns
@@ -130,19 +130,20 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Averaged prior stats for a player
 
+; calculates the averages of one stat for all previous matches
+(defn get-past-average [past column]
+  (float ((partial (fn [x] (/ (reduce + x) (count x)))) (map column past))))
+
 (declare prior-averages)
-(declare get-past-average)
 
-
-;; !!! - Need to get match 0 into here - !!!
 ; Prior Averages initiator, needs data to be grouped by player first
 (defn dataset-prior-averages
-  ([data]
-   (dataset-prior-averages data (keys data)))
-  ([data players]
+  ([data] (dataset-prior-averages data (keys data) nil))
+  ([data match-0] (dataset-prior-averages data (keys data) match-0))
+  ([data players match-0]
    (if (empty? players) data
      (let [player (first players)]
-       (dataset-prior-averages (assoc data player (prior-averages (player data))) (rest players))))))
+       (dataset-prior-averages (assoc data player (prior-averages (player data) match-0)) (rest players))))))
 
 ; Gets the prior averages for each match for a single player, is used when iterating through the player grouped data
 (declare prior-averages-)
@@ -173,10 +174,6 @@
      (let [column (first columns)]
        (if (empty? past) (prior-averages- (assoc current column 0) past (rest columns))
                          (prior-averages- (assoc current column (get-past-average past column)) past (rest columns)))))))
-
-; calculates the averages of one stat for all previous matches
-(defn get-past-average [past column]
-  (float ((partial (fn [x] (/ (reduce + x) (count x)))) (map column past))))
 
 (def prior-averaged-data (dataset-prior-averages player-grouped-data))
 
