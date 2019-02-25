@@ -68,6 +68,7 @@
   (flatten (map csv-str->type (partition 100 100 nil csv-data))))
 
 (def csv-data (csv-str->type (read-csv "nba-17-18-stats.csv")))
+(def csv-data-match-0 (csv-str->type (read-csv "nba-16-17-stats.csv")))
 
 (def data-keys (keys (first csv-data)))
 
@@ -87,10 +88,10 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Ordering Data
 
-(defn group-data-by-player [data]
-  (into {} (map (fn [x] (assoc {} (keyword (get-keywordable-name (first x))) (second x))) (group-by :player data))))
+(defn group-data-by-x [data group-value]
+  (into {} (map (fn [x] (assoc {} (keyword (get-keywordable-name (first x))) (second x))) (group-by group-value data))))
 
-(def player-grouped-data (group-data-by-player csv-data))
+(def player-grouped-data (group-data-by-x csv-data :player))
 
 (defn sort-by-date [data]
   (sort-by (fn [x] (string->date-time (:date x))) data))
@@ -124,12 +125,16 @@
        player-data (rest columns)
        (float ((partial (fn [x] (/ (reduce + x) (count x)))) (map (first columns) player-data)))))))
 
+(def player-total-averages-16-17 (player-total-averages (group-data-by-x csv-data-match-0 :player)))
+
 ;; _____________________________________________________________________________________________________________________
-;; Dataset 01 - Averaged prior stats
+;; Averaged prior stats for a player
 
 (declare prior-averages)
 (declare get-past-average)
 
+
+;; !!! - Need to get match 0 into here - !!!
 ; Prior Averages initiator, needs data to be grouped by player first
 (defn dataset-prior-averages
   ([data]
@@ -140,20 +145,34 @@
        (dataset-prior-averages (assoc data player (prior-averages (player data))) (rest players))))))
 
 ; Gets the prior averages for each match for a single player, is used when iterating through the player grouped data
+(declare prior-averages-)
+
 (defn prior-averages
-  ([input]
-   (prior-averages (first input) (rest input) [] []))
-  ([current future past data]
-   (if (empty? future) (conj data (prior-averages current past)) ; return data after final average calculation
-     ; iterate through the "future" add the current to the past and get the prior averages for the current match
-     (prior-averages (first future) (rest future) (conj past current) (conj data (prior-averages current past)))))
+  ([input] (prior-averages- (first input) (rest input) nil [] []))
+  ([input match-0] (prior-averages- (first input) (rest input) (list match-0) [] [])))
+
+(defn prior-averages-
+  ([current future match-0 past data]
+   (cond
+     (empty? future) ; base-case - return data after final average calculation
+     (conj data (prior-averages- current  past))
+
+     ; if match-0 exists use it for the first match's past
+     (and (empty? past) match-0)
+     (prior-averages-
+       (first future) (rest future) match-0 (conj past current) (conj data (prior-averages- current match-0)))
+
+     :else ; iterate through the "future" add the current to the past and get the prior averages for the current match
+     (prior-averages-
+       (first future) (rest future) match-0 (conj past current) (conj data (prior-averages- current past)))))
+
   ([current past]
-   (prior-averages current past (remove (fn [x] (.contains non-player-stats-columns x)) (keys current))))
+   (prior-averages- current past (remove (fn [x] (.contains non-player-stats-columns x)) (keys current))))
   ([current past columns]
    (if (empty? columns) current
      (let [column (first columns)]
-       (if (empty? past) (prior-averages (assoc current column 0) past (rest columns))
-                         (prior-averages (assoc current column (get-past-average past column)) past (rest columns)))))))
+       (if (empty? past) (prior-averages- (assoc current column 0) past (rest columns))
+                         (prior-averages- (assoc current column (get-past-average past column)) past (rest columns)))))))
 
 ; calculates the averages of one stat for all previous matches
 (defn get-past-average [past column]
@@ -162,7 +181,9 @@
 (def prior-averaged-data (dataset-prior-averages player-grouped-data))
 
 ;; _____________________________________________________________________________________________________________________
-;; Dataset Modifier 01 - Weighted by minutes played
+;; Aggregate players into teams weighted by minutes played
+
+
 
 ;; _____________________________________________________________________________________________________________________
 ;; Dataset to csv-able data - basic, still separated by players
