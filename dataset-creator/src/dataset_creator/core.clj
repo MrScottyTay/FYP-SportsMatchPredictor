@@ -22,12 +22,15 @@
 
 ;; Converts a string into a more keywordable string (replaces " " with "-" etc.)
 (defn get-keywordable-name [input]
-  (clojure.string/lower-case (clojure.string/replace (clojure.string/replace input #"[^a-zA-Z\d\s]" "") " " "-")))
+  (clojure.string/lower-case (clojure.string/replace (clojure.string/replace (str input) #"[^a-zA-Z\d\s]" "") " " "-")))
 
 ;; Converts a string date "29/01/2019" into a datetime object
 (defn string->date-time [input]
   (let [[day month year] (map (fn [x] (Integer/parseInt (re-find #"\A-?\d+" x))) (clojure.string/split input #"/"))]
     (time/date-time year month day)))
+
+(defn column-average [data column]
+  (float ((partial (fn [x] (/ (reduce + x) (count x))) (map column data)))))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Read .csv file
@@ -87,10 +90,10 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Ordering Data
 
-(defn group-data-by-player [data]
-  (into {} (map (fn [x] (assoc {} (keyword (get-keywordable-name (first x))) (second x))) (group-by :player data))))
+(defn group-data-by-x [data column]
+  (into {} (map (fn [x] (assoc {} (keyword (get-keywordable-name (first x))) (second x))) (group-by column data))))
 
-(def player-grouped-data (group-data-by-player csv-data))
+(def player-grouped-data (group-data-by-x csv-data :player))
 
 (defn sort-by-date [data]
   (sort-by (fn [x] (string->date-time (:date x))) data))
@@ -163,6 +166,44 @@
 
 ;; _____________________________________________________________________________________________________________________
 ;; Dataset Modifier 01 - Weighted by minutes played
+
+
+;; _____________________________________________________________________________________________________________________
+;; Aggregate teams
+
+(defn non-bias-average-aggregation
+  ([data]
+   (let [columns (keys (first data))]
+         (non-bias-average-aggregation data (first columns) (rest columns) {})))
+  ([data current-column columns-left output]
+   (let [output (conj output (column-average data current-column))]
+     (if (empty? columns-left) output
+       (non-bias-average-aggregation data (first columns-left) (rest columns-left) output)))))
+
+(declare aggregate-teams-)
+(def aggr-function-default non-bias-average-aggregation)
+
+(defn aggregate-teams
+  ([data]
+   (aggregate-teams data aggr-function-default))
+  ([data aggr-function]
+    (let [teams (keys data)]
+      (aggregate-teams (first teams) (rest teams) data aggr-function)))
+  ([current-team teams data aggr-function]
+    (let [team-data (group-data-by-x (current-team data) :date)
+          data (assoc data current-team (aggregate-teams- team-data aggr-function))]
+      (if (empty? teams) data
+        (aggregate-teams (first teams) (rest teams) data aggr-function)))))
+
+(defn aggregate-teams-
+  ([team-data aggr-function] (aggregate-teams- (first team-data) (rest team-data) () aggr-function))
+  ([current-match matches data aggr-function]
+   (let [data (conj data (aggr-function (second current-match)))]
+     (if (empty? matches) data
+       (aggregate-teams- (first matches) (rest matches) data aggr-function)))))
+
+(def aggregate-teams-data (aggregate-teams (group-data-by-x prior-averaged-data :team)))
+
 
 ;; _____________________________________________________________________________________________________________________
 ;; Dataset to csv-able data - basic, still separated by players

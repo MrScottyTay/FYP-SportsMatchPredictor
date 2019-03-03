@@ -15,8 +15,8 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="114" column="42" lean-forward="true" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
+            <state relative-caret-position="175">
+              <caret line="138" column="3" selection-start-line="138" selection-start-column="3" selection-end-line="138" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -60,6 +60,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -82,9 +83,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -96,7 +96,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="ReplState" timestamp="1551365330612">{:repl-history {:local [{:command &quot;(distinct (map :team csv-data))&quot;, :offset 31, :ns &quot;dataset-creator.core&quot;} {:command &quot;(def test-data (map (fn [x] (second x)) prior-averaged-data))&quot;, :offset 61, :ns &quot;dataset-creator.core&quot;} {:command &quot;(first test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count (flatten test-data))&quot;, :offset 27, :ns &quot;dataset-creator.core&quot;}]}}</component>
+  <component name="ReplState" timestamp="1551382752907">{:repl-history {:local [{:command &quot;(distinct (map :team csv-data))&quot;, :offset 31, :ns &quot;dataset-creator.core&quot;} {:command &quot;(def test-data (map (fn [x] (second x)) prior-averaged-data))&quot;, :offset 61, :ns &quot;dataset-creator.core&quot;} {:command &quot;(first test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count test-data)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(count (flatten test-data))&quot;, :offset 27, :ns &quot;dataset-creator.core&quot;}]}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -186,7 +186,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -195,14 +194,14 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="right" id="REPL" order="3" sideWeight="0.7922912" side_tool="true" weight="0.36673775" />
+      <window_info anchor="right" id="REPL" order="3" sideWeight="0.7933619" side_tool="true" weight="0.34275052" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Leiningen" order="3" sideWeight="0.20770878" visible="true" weight="0.36673775" />
+      <window_info anchor="right" id="Leiningen" order="3" sideWeight="0.20663811" visible="true" weight="0.34275052" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14179105" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14498934" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -226,6 +225,34 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="73" lean-forward="true" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1938">
+          <caret line="114" column="42" lean-forward="true" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2057">
@@ -305,8 +332,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="114" column="42" lean-forward="true" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
+        <state relative-caret-position="175">
+          <caret line="138" column="3" selection-start-line="138" selection-start-column="3" selection-end-line="138" selection-end-column="3" />
         </state>
       </provider>
     </entry>
