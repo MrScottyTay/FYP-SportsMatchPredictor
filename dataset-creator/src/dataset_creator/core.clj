@@ -111,7 +111,7 @@
   ([input] ; Input data should already be grouped by players
    (let [players (keys input)
          first-player (first players)]
-     (player-total-averages first-player (rest players) (keys ((first (first-player input)) input)) input)))
+     (player-total-averages first-player (rest players) (keys (first (first-player input))) input)))
   ([current-player rest-players columns data]; Iterates through the players
    (let [player-data (current-player data)
          output-data (assoc {} :player (:player player-data))]
