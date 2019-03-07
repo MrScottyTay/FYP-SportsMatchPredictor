@@ -143,7 +143,7 @@
   ([data players match-0]
    (if (empty? players) data
      (let [player (first players)]
-       (dataset-prior-averages (assoc data player (prior-averages (player data) match-0)) (rest players))))))
+       (dataset-prior-averages (assoc data player (prior-averages (player data) (player match-0))) (rest players))))))
 
 ; Gets the prior averages for each match for a single player, is used when iterating through the player grouped data
 (declare prior-averages-)
@@ -175,7 +175,7 @@
        (if (empty? past) (prior-averages- (assoc current column 0) past (rest columns))
                          (prior-averages- (assoc current column (get-past-average past column)) past (rest columns)))))))
 
-(def prior-averaged-data (dataset-prior-averages player-grouped-data))
+#_(def prior-averaged-data (dataset-prior-averages player-grouped-data))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Aggregate players into teams weighted by minutes played
@@ -188,4 +188,4 @@
 (defn create-dataset-player-csv-format [player-grouped-data]
   (sort-by (juxt (fn [x] (string->date-time (:date x))) :min) (flatten (map (fn [x] (second x)) player-grouped-data))))
 
-(def prior-averaged-csv-data (create-dataset-player-csv-format prior-averaged-data))
+#_(def prior-averaged-csv-data (create-dataset-player-csv-format prior-averaged-data))
