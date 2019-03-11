@@ -17,9 +17,6 @@
           s (drop-while #(Character/isDigit %) s)]
       (empty? s))))
 
-(defn parse-int [s]
-  (Integer. (re-find  #"\d+" s )))
-
 ;; Converts a string into a more keywordable string (replaces " " with "-" etc.)
 (defn get-keywordable-name [input]
   (clojure.string/lower-case (clojure.string/replace (clojure.string/replace input #"[^a-zA-Z\d\s]" "") " " "-")))
@@ -28,6 +25,25 @@
 (defn string->date-time [input]
   (let [[day month year] (map (fn [x] (Integer/parseInt (re-find #"\A-?\d+" x))) (clojure.string/split input #"/"))]
     (time/date-time year month day)))
+
+;; Removes non player stat keywords (:player, :team, :result etc.)
+(defn remove-non-stat-keys [input]
+  (remove (fn [x] (.contains non-player-stats-columns x)) input))
+
+;; !!!! I THINK THERES A PLAYER WHO ONLY PLAYED ONE GAME !!!!
+;; need to check that there are multiple lines of data before applying averages
+
+(declare find-string)
+
+(defn averages [data]
+  (do (find-string data)
+  (float ((partial (fn [x] (/ (reduce + x) (count x)))) data))))
+
+(defn find-string [data]
+  (if (empty? data) ()
+                    (if (not (numeric? (first data)))
+                      (print (first data))
+                      (find-string (rest data)))))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Read .csv file
@@ -53,7 +69,7 @@
            column-data (column row)]
        (cond
          (numeric? column-data)
-         (csv-str->type (assoc row column (parse-int column-data)) (rest columns))
+         (csv-str->type (assoc row column (read-string column-data)) (rest columns))
 
          (= column-data "TRUE")
          (csv-str->type (assoc row column true) (rest columns))
@@ -111,19 +127,18 @@
   ([input] ; Input data should already be grouped by players
    (let [players (keys input)
          first-player (first players)]
-     (player-total-averages first-player (rest players) (keys (first (first-player input))) input)))
+     (player-total-averages first-player (rest players)
+                            (remove-non-stat-keys (keys (first (first-player input)))) input)))
   ([current-player rest-players columns data]; Iterates through the players
-   (let [player-data (current-player data)
-         output-data (assoc {} :player (:player player-data))]
-     (if (empty? rest-players)
-       (assoc data current-player (player-total-averages player-data columns output-data))
+   (let [player-data (current-player data)]
+     (if (empty? rest-players) (player-total-averages player-data columns data)
        (player-total-averages (first rest-players) (rest rest-players) columns
-                              (assoc data current-player (player-total-averages player-data columns output-data))))))
-  ([player-data columns output-data] ; Calculates the total averages for a player
-   (if (empty? columns) output-data
-     (player-total-averages
-       player-data (rest columns)
-       (float ((partial (fn [x] (/ (reduce + x) (count x)))) (map (first columns) player-data)))))))
+                              (player-total-averages player-data columns data)))))
+  ([player-data columns data] ; Calculates the total averages for a player
+   (let [column (first columns)]
+     (if (empty? columns) data
+       (player-total-averages player-data (rest columns)
+         (assoc data column (averages (map column player-data))))))))
 
 (def player-total-averages-16-17 (player-total-averages (group-data-by-x csv-data-match-0 :player)))
 
