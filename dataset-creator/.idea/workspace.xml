@@ -15,8 +15,8 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="498">
+              <caret line="175" column="31" lean-forward="true" selection-start-line="175" selection-start-column="31" selection-end-line="175" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -60,6 +60,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -82,9 +84,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -96,7 +96,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="ReplState" timestamp="1552165232806">{:repl-history {:local [{:command &quot;(parse-int 0.2)&quot;, :offset 15, :ns &quot;user&quot;} {:command &quot;(parse-int \&quot;0.2\&quot;)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(read-string \&quot;0.2\&quot;)&quot;, :offset 19, :ns &quot;dataset-creator.core&quot;} {:command &quot;(type (read-string \&quot;0.2\&quot;))&quot;, :offset 26, :ns &quot;dataset-creator.core&quot;} {:command &quot;(type (read-string \&quot;2\&quot;))&quot;, :offset 24, :ns &quot;dataset-creator.core&quot;} {:command &quot;(numeric? \&quot;0.2\&quot;)&quot;, :offset 16, :ns &quot;dataset-creator.core&quot;}]}}</component>
+  <component name="ReplState" timestamp="1552405933476">{:repl-history {:local [{:command &quot;(parse-int 0.2)&quot;, :offset 15, :ns &quot;user&quot;} {:command &quot;(parse-int \&quot;0.2\&quot;)&quot;, :offset 17, :ns &quot;dataset-creator.core&quot;} {:command &quot;(read-string \&quot;0.2\&quot;)&quot;, :offset 19, :ns &quot;dataset-creator.core&quot;} {:command &quot;(type (read-string \&quot;0.2\&quot;))&quot;, :offset 26, :ns &quot;dataset-creator.core&quot;} {:command &quot;(type (read-string \&quot;2\&quot;))&quot;, :offset 24, :ns &quot;dataset-creator.core&quot;} {:command &quot;(numeric? \&quot;0.2\&quot;)&quot;, :offset 16, :ns &quot;dataset-creator.core&quot;} {:command &quot;(read-string \&quot;\&quot;)&quot;, :offset 16, :ns &quot;user&quot;} {:command &quot;(read-string \&quot; \&quot;)&quot;, :offset 17, :ns &quot;user&quot;} {:command &quot;(read-string \&quot;21\&quot;)&quot;, :offset 18, :ns &quot;user&quot;} {:command &quot;(read-string \&quot;TRUE\&quot;)&quot;, :offset 20, :ns &quot;user&quot;} {:command &quot;(read-string \&quot;hello\&quot;)&quot;, :offset 21, :ns &quot;user&quot;} {:command &quot;(type (read-string \&quot;TRUE\&quot;))&quot;, :offset 27, :ns &quot;user&quot;} {:command &quot;(type (read-string \&quot;21\&quot;))&quot;, :offset 25, :ns &quot;user&quot;} {:command &quot;(type (read-string \&quot;21.0\&quot;))&quot;, :offset 27, :ns &quot;user&quot;} {:command &quot;player-total-averages&quot;, :offset 21, :ns &quot;dataset-creator.core&quot;} {:command &quot;(first player-total-averages)&quot;, :offset 29, :ns &quot;dataset-creator.core&quot;} {:command &quot;(keys nil)&quot;, :offset 10, :ns &quot;dataset-creator.core&quot;} {:command &quot;(contains? (keys nil) :hello)&quot;, :offset 29, :ns &quot;dataset-creator.core&quot;} {:command &quot;(keys {:hello \&quot;hi\&quot;})&quot;, :offset 20, :ns &quot;dataset-creator.core&quot;} {:command &quot;(contains? (keys {:hello \&quot;hi\&quot;}) :hello)&quot;, :offset 39, :ns &quot;dataset-creator.core&quot;} {:command &quot;(contains? {:hello \&quot;hi\&quot;} :hello)&quot;, :offset 32, :ns &quot;dataset-creator.core&quot;} {:command &quot;player-total-averages-16-17&quot;, :offset 27, :ns &quot;dataset-creator.core&quot;} {:command &quot;(keys player-total-averages-16-17)&quot;, :offset 34, :ns &quot;dataset-creator.core&quot;} {:command &quot;(= (:johnson-t player-total-averages-16-17) (:bazemore-k player-total-averages-16-17))&quot;, :offset 86, :ns &quot;dataset-creator.core&quot;}]}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -204,12 +204,12 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14658849" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14978679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" x="307" y="199" width="676" height="751" id="Debug" order="11" sideWeight="0.8201285" visible="true" weight="0.35021323" />
+      <window_info anchor="right" x="307" y="199" width="676" height="751" id="Debug" order="11" sideWeight="0.8201285" weight="0.35021323" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -229,20 +229,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dataset_creator/core.clj</url>
-          <line>44</line>
-          <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dataset_creator/core.clj</url>
-          <line>43</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -255,20 +241,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -605,10 +577,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/lang/Compiler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="1683" selection-start-line="1683" selection-end-line="1683" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/lang/Numbers.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataset_creator/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="498">
+          <caret line="175" column="31" lean-forward="true" selection-start-line="175" selection-start-column="31" selection-end-line="175" selection-end-column="31" />
         </state>
       </provider>
     </entry>
