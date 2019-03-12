@@ -30,20 +30,9 @@
 (defn remove-non-stat-keys [input]
   (remove (fn [x] (.contains non-player-stats-columns x)) input))
 
-;; !!!! I THINK THERES A PLAYER WHO ONLY PLAYED ONE GAME !!!!
-;; need to check that there are multiple lines of data before applying averages
-
-(declare find-string)
-
 (defn averages [data]
-  (do (find-string data)
-  (float ((partial (fn [x] (/ (reduce + x) (count x)))) data))))
+  (float ((partial (fn [x] (/ (reduce + x) (count x)))) data)))
 
-(defn find-string [data]
-  (if (empty? data) ()
-                    (if (not (numeric? (first data)))
-                      (print (first data))
-                      (find-string (rest data)))))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Read .csv file
@@ -70,6 +59,9 @@
        (cond
          (numeric? column-data)
          (csv-str->type (assoc row column (read-string column-data)) (rest columns))
+
+         (= column-data "")
+         (csv-str->type (assoc row column 0) (rest columns))
 
          (= column-data "TRUE")
          (csv-str->type (assoc row column true) (rest columns))
@@ -122,32 +114,30 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Match 0 - Total Averaged stats for previous season
 
-; Gets a players total averages for a total season
-(defn player-total-averages
-  ([input] ; Input data should already be grouped by players
-   (let [players (keys input)
-         first-player (first players)]
-     (player-total-averages first-player (rest players)
-                            (remove-non-stat-keys (keys (first (first-player input)))) input)))
-  ([current-player rest-players columns data]; Iterates through the players
-   (let [player-data (current-player data)]
-     (if (empty? rest-players) (player-total-averages player-data columns data)
-       (player-total-averages (first rest-players) (rest rest-players) columns
-                              (player-total-averages player-data columns data)))))
-  ([player-data columns data] ; Calculates the total averages for a player
-   (let [column (first columns)]
-     (if (empty? columns) data
-       (player-total-averages player-data (rest columns)
-         (assoc data column (averages (map column player-data))))))))
+(declare total-averages)
 
-(def player-total-averages-16-17 (player-total-averages (group-data-by-x csv-data-match-0 :player)))
+; Gets a players total averages for a total season
+(defn dataset-total-averages
+  ([data] (dataset-total-averages data (keys data)))
+  ([data players]
+   (if (empty? players) data
+     (let [player (first players)]
+       (dataset-total-averages (assoc data player (total-averages player (player data))) (rest players))))))
+
+(defn total-averages
+  ([player player-data]
+   (let [columns (remove-non-stat-keys (keys (first player-data)))]
+     (total-averages player-data columns (assoc {} :player player))))
+  ([player-data columns output-data]
+   (if (empty? columns)
+     output-data
+     (let [column (first columns)]
+       (total-averages player-data (rest columns) (assoc output-data column (averages (map column player-data))))))))
+
+(def player-total-averages-16-17 (dataset-total-averages (group-data-by-x csv-data-match-0 :player)))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Averaged prior stats for a player
-
-; calculates the averages of one stat for all previous matches
-(defn get-past-average [past column]
-  (float ((partial (fn [x] (/ (reduce + x) (count x)))) (map column past))))
 
 (declare prior-averages)
 
@@ -162,11 +152,9 @@
 
 ; Gets the prior averages for each match for a single player, is used when iterating through the player grouped data
 (declare prior-averages-)
-
 (defn prior-averages
   ([input] (prior-averages- (first input) (rest input) nil [] []))
   ([input match-0] (prior-averages- (first input) (rest input) (list match-0) [] [])))
-
 (defn prior-averages-
   ([current future match-0 past data]
    (cond
@@ -188,9 +176,9 @@
    (if (empty? columns) current
      (let [column (first columns)]
        (if (empty? past) (prior-averages- (assoc current column 0) past (rest columns))
-                         (prior-averages- (assoc current column (get-past-average past column)) past (rest columns)))))))
+                         (prior-averages- (assoc current column (averages (map column past))) past (rest columns)))))))
 
-#_(def prior-averaged-data (dataset-prior-averages player-grouped-data))
+(def prior-averaged-data (dataset-prior-averages player-grouped-data #_player-total-averages-16-17))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Aggregate players into teams weighted by minutes played
