@@ -4,7 +4,6 @@
 
 (def ^:const input-data-path "")
 (def ^:const non-player-stats-columns [:date :time :home-team :away-team :home-score :away-score :player :team :result])
-
 ;; _____________________________________________________________________________________________________________________
 ;; Helpers
 
@@ -140,6 +139,7 @@
 ;; Averaged prior stats for a player
 
 (declare prior-averages)
+(declare get-past-average)
 
 ; Prior Averages initiator, needs data to be grouped by player first
 (defn dataset-prior-averages
@@ -148,42 +148,77 @@
   ([data players match-0]
    (if (empty? players) data
      (let [player (first players)]
-       (dataset-prior-averages (assoc data player (prior-averages (player data) (player match-0))) (rest players))))))
+       (dataset-prior-averages
+         (assoc data player (prior-averages (player data) (player match-0))) (rest players) match-0)))))
 
 ; Gets the prior averages for each match for a single player, is used when iterating through the player grouped data
 (declare prior-averages-)
 (defn prior-averages
-  ([input] (prior-averages- (first input) (rest input) nil [] []))
-  ([input match-0] (prior-averages- (first input) (rest input) (list match-0) [] [])))
-(defn prior-averages-
+  ([player-data match-0] (prior-averages (first player-data) (rest player-data) match-0 [] []))
   ([current future match-0 past data]
    (cond
-     (empty? future) ; base-case - return data after final average calculation
-     (conj data (prior-averages- current  past))
+     (and match-0 (empty? past) (empty? future))
+     (conj data (prior-averages- current past))
 
-     ; if match-0 exists use it for the first match's past
-     (and (empty? past) match-0)
-     (prior-averages-
+     (and match-0 (empty? past))
+     (prior-averages
        (first future) (rest future) match-0 (conj past current) (conj data (prior-averages- current match-0)))
 
-     :else ; iterate through the "future" add the current to the past and get the prior averages for the current match
-     (prior-averages-
-       (first future) (rest future) match-0 (conj past current) (conj data (prior-averages- current past)))))
+     (empty? future)
+     (conj data (prior-averages- current past))
 
+     :else
+     (prior-averages
+       (first future) (rest future) match-0 (conj past current) (conj data (prior-averages- current past))))))
+(defn prior-averages-
   ([current past]
-   (prior-averages- current past (remove (fn [x] (.contains non-player-stats-columns x)) (keys current))))
+   (prior-averages- current past (remove-non-stat-keys (keys current))))
   ([current past columns]
-   (if (empty? columns) current
+   (if (empty? columns)
+     current
      (let [column (first columns)]
-       (if (empty? past) (prior-averages- (assoc current column 0) past (rest columns))
-                         (prior-averages- (assoc current column (averages (map column past))) past (rest columns)))))))
+       (cond
+         (empty? past) (prior-averages- (assoc current column 0) past (rest columns))
+         (map? past) (prior-averages- (assoc current column (column past)) past (rest columns))
+         :else (prior-averages- (assoc current column (averages (map column past))) past (rest columns)))))))
 
-(def prior-averaged-data (dataset-prior-averages player-grouped-data #_player-total-averages-16-17))
+(def prior-averaged-data (dataset-prior-averages player-grouped-data player-total-averages-16-17))
 
 ;; _____________________________________________________________________________________________________________________
-;; Aggregate players into teams weighted by minutes played
+;; Aggregate players into teams
 
+(def ^:const team-stat-keys [:date :time :home-team :away-team :home-score :away-score :team :result])
 
+;; unbiased aggregation using averages across the team (no weighting)
+(defn aggr-average
+  ([data]
+   (let [first-data (first data)]
+     (aggr-average data (remove-non-stat-keys first-data) (select-keys first-data team-stat-keys))))
+  ([data columns output]
+   (if (empty? columns) output
+     (let [column (first columns)]
+       (aggr-average data (rest columns) (assoc output column (averages (map column data))))))))
+
+(declare aggregate-players-)
+(defn aggregate-players
+  ([data] (aggregate-players data aggr-average)) ; if no aggregation function is supplied use un-biased averages
+  ([data aggr-fn]
+   (let [team-sorted-data (group-data-by-x data :team)]
+     (aggregate-players team-sorted-data (keys team-sorted-data) aggr-fn)))
+  ([data teams aggr-fn]
+   (if (empty? teams) data
+     (let [current-team (first teams)
+           date-sorted-data (group-data-by-x (current-team data) :date)]
+       (aggregate-players
+         (assoc data current-team
+                     (aggregate-players- date-sorted-data (keys date-sorted-data) aggr-fn)) (rest teams) aggr-fn)))))
+
+(defn aggregate-players- [data dates aggr-fn]
+   (if (empty? dates) data
+     (let [current-date (first dates)]
+       (aggregate-players- (assoc data current-date (aggr-fn (current-date data))) (rest dates) aggr-fn))))
+
+(def aggregated-data (aggregate-players (flatten prior-averaged-data)))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Dataset to csv-able data - basic, still separated by players
