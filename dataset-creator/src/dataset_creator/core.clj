@@ -204,6 +204,27 @@
      (let [column (first columns)]
        (aggr-average data (rest columns) (assoc output column (averages (map column data))))))))
 
+(defn get-percentage [low high]
+  (* (/ 100 high) low))
+
+(defn get-weight-value [])
+
+;; biased aggregation that takes into account the average minutes played per player
+(defn aggr-minutes
+  ([data]
+   (let [first-data (first data)
+         total-minutes (reduce + (map :min data))]
+     (aggr-minutes data total-minutes (remove-non-stat-keys (keys first-data)) (select-keys first-data team-stat-keys))))
+  ([data total-minutes columns output]
+   (if (empty? columns)
+     output
+     (let [column (first columns)]
+       (aggr-average))
+
+     )
+    )
+  )
+
 ;(flatten (map (fn [x] (map vals (vals x))) (vals data)))
 
 (declare aggregate-players-)
@@ -231,6 +252,12 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Combine Match Data into a single row
 
+(defn determine-home-away [teams]
+  (let [first-team (first teams)]
+    (if (= (:home-team first-team) (:team first-team))
+      (assoc {} :home-team first-team :away-team (second teams))
+      (assoc {} :home-team (second teams) :away-team first-team))))
+
 (declare combine-match-data-)
 (declare combine-match-data--)
 (defn combine-match-data
@@ -255,13 +282,14 @@
 
 (defn combine-match-data--
   ([data]
-   (let [home-team (first data)]
-     (combine-match-data-- home-team (second data) (remove-non-stat-keys (keys home-team)))))
+   (let [teams (determine-home-away data)
+         home-team (:home-team teams)]
+     (combine-match-data-- home-team (:away-team teams) (remove-non-stat-keys (keys home-team)))))
   ([home-team away-team columns]
    (if (empty? columns) home-team
          (let [column (first columns)]
            (combine-match-data--
-         (assoc home-team column (- (column home-team) (column away-team))) away-team (rest columns))))))
+             (assoc home-team column (- (column home-team) (column away-team))) away-team (rest columns))))))
 
 (def combined-data (combine-match-data aggregated-data))
 
