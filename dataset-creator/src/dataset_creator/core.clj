@@ -238,7 +238,7 @@
    (let [date-sorted-data (group-data-by-x data :date)]
      (combine-match-data date-sorted-data (keys date-sorted-data))))
   ([date-sorted-data dates]
-   (if (empty? dates) date-sorted-data
+   (if (empty? dates) (flatten (map vals (vals date-sorted-data)))
      (let [current-date (first dates)]
        (combine-match-data (assoc date-sorted-data current-date (combine-match-data- (current-date date-sorted-data)))
                            (rest dates))))))
@@ -259,8 +259,8 @@
      (combine-match-data-- home-team (second data) (remove-non-stat-keys (keys home-team)))))
   ([home-team away-team columns]
    (if (empty? columns) home-team
-     (let [column (first columns)]
-       (combine-match-data--
+         (let [column (first columns)]
+           (combine-match-data--
          (assoc home-team column (- (column home-team) (column away-team))) away-team (rest columns))))))
 
 (def combined-data (combine-match-data aggregated-data))
