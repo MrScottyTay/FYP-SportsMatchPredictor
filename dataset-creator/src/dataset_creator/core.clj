@@ -93,8 +93,8 @@
   (let [team-grouped-data (group-data-by-x data :team)]
     (flatten (vals (select-keys team-grouped-data (remove (fn [x] (.contains [:0] x)) (keys team-grouped-data)))))))
 
-(def csv-data (remove-all-star-matches (csv-str->type (read-csv "nba-17-18-stats.csv"))))
-(def csv-data-match-0 (remove-all-star-matches (csv-str->type (read-csv "nba-16-17-stats.csv"))))
+#_(def csv-data (remove-all-star-matches (csv-str->type (read-csv "nba-17-18-stats.csv"))))
+#_(def csv-data-match-0 (remove-all-star-matches (csv-str->type (read-csv "nba-16-17-stats.csv"))))
 
 (def data-keys (keys (first csv-data)))
 
@@ -138,7 +138,7 @@
      (let [column (first columns)]
        (total-averages player-data (rest columns) (assoc output-data column (averages (map column player-data))))))))
 
-(def player-total-averages-16-17 (dataset-total-averages (group-data-by-x csv-data-match-0 :player)))
+#_(def player-total-averages-16-17 (dataset-total-averages (group-data-by-x csv-data-match-0 :player)))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Averaged prior stats for a player
@@ -187,12 +187,14 @@
          (map? past) (prior-averages- (assoc current column (column past)) past (rest columns))
          :else (prior-averages- (assoc current column (averages (map column past))) past (rest columns)))))))
 
-(def prior-averaged-data (dataset-prior-averages (group-data-by-x csv-data :player) player-total-averages-16-17))
+#_(def prior-averaged-data (dataset-prior-averages (group-data-by-x csv-data :player) player-total-averages-16-17))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Aggregate players into teams
 
 (def ^:const team-stat-keys [:date :time :home-team :away-team :home-score :away-score :team :result])
+(def ^:const zero-high-keys
+  (into [] (concat team-stat-keys [:pts :ast :reb :min :fg :fga :3p :3pa :ft :fta :or :dr :pf :st :to :bs])))
 
 ;; unbiased aggregation using averages across the team (no weighting)
 (defn aggr-average
@@ -204,28 +206,32 @@
      (let [column (first columns)]
        (aggr-average data (rest columns) (assoc output column (averages (map column data))))))))
 
-(defn get-percentage [low high]
-  (* (/ 100 high) low))
 
-(defn get-weight-value [])
+(defn get-percentage [low high]
+  (* (float (/ 100 high)) low))
+(defn get-weight-value [player-data highest-minutes]
+  (assoc player-data :weight-value (/ (get-percentage (:min player-data) highest-minutes) 100)))
+(defn weighted-stat [player-data column]
+  (* (column player-data) (:weight-value player-data)))
+(defn weighted-average [data column]
+  (let [weighted-stats (map (fn [x] (weighted-stat x column)) data)]
+    (do (/ (reduce + weighted-stats) (count weighted-stats)) )))
 
 ;; biased aggregation that takes into account the average minutes played per player
 (defn aggr-minutes
   ([data]
-   (let [first-data (first data)
-         total-minutes (reduce + (map :min data))]
-     (aggr-minutes data total-minutes (remove-non-stat-keys (keys first-data)) (select-keys first-data team-stat-keys))))
-  ([data total-minutes columns output]
-   (if (empty? columns)
-     output
+   (let [ordered-data (reverse (sort-by :min data))
+         first-data (first ordered-data)
+         first-min (:min first-data)]
+     (if (zero? first-min)
+       (select-keys first-data zero-high-keys)
+       (aggr-minutes (map (fn [x] (get-weight-value x first-min)) ordered-data)
+                     (remove-non-stat-keys (keys first-data)) (select-keys first-data team-stat-keys)))))
+  ([data columns output]
+   (if (empty? columns) output
      (let [column (first columns)]
-       (aggr-average))
+       (aggr-minutes data (rest columns) (assoc output column (weighted-average data column)))))))
 
-     )
-    )
-  )
-
-;(flatten (map (fn [x] (map vals (vals x))) (vals data)))
 
 (declare aggregate-players-)
 (declare aggregate-players--)
@@ -247,7 +253,7 @@
      (let [current-datetime (first datetimes)]
        (aggregate-players- (assoc data current-datetime (aggr-fn (current-datetime data))) (rest datetimes) aggr-fn))))
 
-(def aggregated-data (aggregate-players prior-averaged-data))
+(def aggregated-data (aggregate-players prior-averaged-data aggr-minutes))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Combine Match Data into a single row
@@ -293,3 +299,29 @@
 
 (def combined-data (combine-match-data aggregated-data))
 
+;; _____________________________________________________________________________________________________________________
+
+(def player-total-averages-16-17
+  (dataset-total-averages
+    (group-data-by-x (remove-all-star-matches (csv-str->type (read-csv "nba-16-17-stats.csv"))) :player)))
+
+(def csv-data (remove-all-star-matches (csv-str->type (read-csv "nba-17-18-stats.csv"))))
+
+(def prior-averaged-data-m0 (dataset-prior-averages (group-data-by-x csv-data :player) player-total-averages-16-17))
+(def prior-averaged-data (dataset-prior-averages (group-data-by-x csv-data :player)))
+
+(def aggregated-data-m0 (aggregate-players prior-averaged-data-m0))
+(def aggregated-data-m0-mins (aggregate-players prior-averaged-data-m0 aggr-minutes))
+
+(def aggregated-data (aggregate-players prior-averaged-data))
+(def aggregated-data-mins (aggregate-players prior-averaged-data aggr-minutes))
+
+(def combined-data-m0 (combine-match-data aggregated-data-m0))
+(def combined-data-m0-mins (combine-match-data aggregated-data-m0-mins))
+(def combined-data (combine-match-data aggregated-data))
+(def combined-data-mins (combine-match-data aggregated-data-mins))
+
+(write-csv "nba-17-18_prior-averages-m0_unbiased-aggr.csv" combined-data-m0 aggregated-dataset-columns)
+(write-csv "nba-17-18_prior-averages-m0_mins-aggr.csv" combined-data-m0-mins aggregated-dataset-columns)
+(write-csv "nba-17-18_prior-averages_unbiased-aggr.csv" combined-data aggregated-dataset-columns)
+(write-csv "nba-17-18_prior-averages_mins-aggr.csv" combined-data-mins aggregated-dataset-columns)
