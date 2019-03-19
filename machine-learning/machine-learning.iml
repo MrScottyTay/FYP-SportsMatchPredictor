@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module cursive.leiningen.project.LeiningenProjectsManager.displayName="machine-learning:0.1.0-SNAPSHOT" cursive.leiningen.project.LeiningenProjectsManager.isLeinModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/all:1.1.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/core:1.1.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/native_ref-java:1.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/native_system-java:1.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_ref-linux-armhf:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_ref-linux-i686:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_ref-linux-x86_64:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_ref-osx-x86_64:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_ref-win-i686:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_ref-win-x86_64:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_system-linux-armhf:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_system-linux-i686:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_system-linux-x86_64:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_system-osx-x86_64:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_system-win-i686:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil.netlib/netlib-native_system-win-x86_64:1.1:natives" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.fommil/jniloader:1.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.taoensso/encore:2.89.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.taoensso/nippy:2.13.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.taoensso/truss:1.3.6" level="project" />
+    <orderEntry type="library" name="Leiningen: net.jpountz.lz4/lz4:1.3" level="project" />
+    <orderEntry type="library" name="Leiningen: net.mikera/clojure-utils:0.8.0" level="project" />
+    <orderEntry type="library" name="Leiningen: net.mikera/core.matrix:0.60.3" level="project" />
+    <orderEntry type="library" name="Leiningen: net.mikera/mathz:0.3.0" level="project" />
+    <orderEntry type="library" name="Leiningen: net.mikera/randomz:0.3.0" level="project" />
+    <orderEntry type="library" name="Leiningen: net.mikera/vectorz-clj:0.47.0" level="project" />
+    <orderEntry type="library" name="Leiningen: net.mikera/vectorz:0.65.0" level="project" />
+    <orderEntry type="library" name="Leiningen: net.sourceforge.f2j/arpack_combined_all:0.1" level="project" />
+    <orderEntry type="library" name="Leiningen: org.bytedeco.javacpp-presets/cuda:8.0-1.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.bytedeco.javacpp-presets/cuda:8.0-1.2:windows-x86_64" level="project" />
+    <orderEntry type="library" name="Leiningen: org.bytedeco/javacpp:1.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.async:0.3.443" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.cache:0.6.5" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.memoize:0.5.9" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.csv:0.1.4" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.priority-map:0.0.7" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/math.combinatorics:0.1.4" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer.jvm:0.7.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer:0.6.9" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.reader:0.10.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.iq80.snappy/snappy:0.4" level="project" />
+    <orderEntry type="library" name="Leiningen: org.ow2.asm/asm-all:4.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.tukaani/xz:1.6" level="project" />
+    <orderEntry type="library" name="Leiningen: thinktopic/cortex:0.9.22" level="project" />
+    <orderEntry type="library" name="Leiningen: thinktopic/think.datatype:0.3.17" level="project" />
+    <orderEntry type="library" name="Leiningen: thinktopic/think.parallel:0.3.7" level="project" />
+    <orderEntry type="library" name="Leiningen: thinktopic/think.resource:1.2.1" level="project" />
+    <orderEntry type="library" name="Leiningen: us.bpsm/edn-java:0.4.7" level="project" />
+  </component>
+</module>
