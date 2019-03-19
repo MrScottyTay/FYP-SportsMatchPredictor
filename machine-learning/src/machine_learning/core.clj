@@ -16,9 +16,19 @@
           s (drop-while #(Character/isDigit %) s)]
       (empty? s))))
 
+;helper function from "https://stackoverflow.com/questions/3249334/test-whether-a-list-contains-a-specific-value-in-clojure"
+;by j-g-faustus
+(defn in?
+  "true if coll contains elm"
+  [coll elm]
+  (some #(= elm %) coll))
+
 ;; Removes non player stat keywords (:player, :team, :result etc.)
 (defn remove-non-stat-keys [input]
   (remove (fn [x] (.contains non-player-stats-columns x)) input))
+
+(defn get-percentage-of [high low]
+  (* (/ high 100) low))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Read CSV Files
@@ -75,4 +85,30 @@
            label (vector (:result current-data))]
        (initialise-dataset (rest data) (conj output (assoc {} :data stats :label label))) ))))
 
-(def dataset (initialise-dataset csv-data))
+(defn get-training-testing-indices
+  ([total testing-size]
+   (let [testing-indices (get-training-testing-indices total testing-size [])]
+     (vector (into [](remove (partial in? testing-indices) (range total))) testing-indices)))
+  ([total training-size indices]
+   (if (= (count indices) training-size) indices
+     (let [number (rand-int total)]
+       (if (in? indices number) (get-training-testing-indices total training-size indices)
+         (get-training-testing-indices total training-size (conj indices number)))))))
+
+;; gets the lines of data by the indices supplied
+(defn get-data-by-indices
+  ([data indices] (get-data-by-indices data indices []))
+  ([data indices output]
+   (if (empty? indices) output
+     (get-data-by-indices data (rest indices) (conj output (nth data (first indices)))))))
+
+;; splits dataset up into training and testing sets, percentage given is the size of the testing set
+(defn split-dataset [data percentage]
+   (let [dataset-size (count data)
+         [training-indices testing-indices] (get-training-testing-indices
+                                              dataset-size (get-percentage-of dataset-size percentage))]
+     (assoc {} :training-set (get-data-by-indices data training-indices)
+               :testing-set (get-data-by-indices data testing-indices))))
+
+(def dataset (split-dataset (initialise-dataset csv-data) 20))
+
