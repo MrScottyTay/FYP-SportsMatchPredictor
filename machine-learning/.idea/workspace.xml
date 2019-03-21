@@ -15,8 +15,8 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/machine_learning/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="535">
+              <caret line="176" selection-start-line="176" selection-end-line="177" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -24,8 +24,8 @@
       <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="85">
+              <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -51,9 +51,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -76,12 +74,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../dataset-creator" />
   </component>
-  <component name="ReplState" timestamp="1553014236604">{:repl-history {:ide [], :local [], :remote []}}</component>
+  <component name="ReplState" timestamp="1553194265729">{:repl-history {:ide [], :local [{:command &quot;(first dataset)&quot;, :offset 15, :ns &quot;machine-learning.core&quot;} {:command &quot;(first (first dataset))&quot;, :offset 23, :ns &quot;machine-learning.core&quot;} {:command &quot;(first (:training-set dataset))&quot;, :offset 31, :ns &quot;machine-learning.core&quot;} {:command &quot;(:data (first training-set))&quot;, :offset 28, :ns &quot;machine-learning.core&quot;} {:command &quot;(def training-set (:training-set dataset))\n(def testing-set (:testing-set dataset))\n(:data (first training-set))&quot;, :offset 112, :ns &quot;machine-learning.core&quot;} {:command &quot;(count (:data (first training-set)))&quot;, :offset 36, :ns &quot;machine-learning.core&quot;} {:command &quot;(defn train []\n  (let [network (network/linear-network network-description)\n        train-original (:training-set dataset)\n        test-dataset (:testing-set dataset)\n        train-dataset (experiment.util/infinite-class-balanced-dataset train-original\n                                                                       :class-key :label\n                                                                       :epoch-size (:epoch-size params))]\n    (train/train-n network train-dataset test-dataset\n                   :batch-size (:batch-size params)\n                   :epoch-count (:epoch-count params)\n                   :optimizer (:optimizer params))))&quot;, :offset 660, :ns &quot;machine-learning.core&quot;} {:command &quot;(train)&quot;, :offset 7, :ns &quot;machine-learning.core&quot;} {:command &quot;(train network-description network-params)&quot;, :offset 42, :ns &quot;machine-learning.core&quot;} {:command &quot;model&quot;, :offset 5, :ns &quot;machine-learning.core&quot;} {:command &quot;(def network-description2\n  [(layers/input 16 1 1 :id :data)\n   (layers/linear-&gt;tanh 32)\n   (layers/tanh)\n   (layers/linear 1 :id :label)])\n(def model (train network-description2 network-params))&quot;, :offset 195, :ns &quot;machine-learning.core&quot;} {:command &quot;model2&quot;, :offset 6, :ns &quot;machine-learning.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -178,29 +178,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="right" id="REPL" order="3" sideWeight="0.7955032" side_tool="true" visible="true" weight="0.32995737" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="right" id="REPL" order="3" sideWeight="0.7965739" side_tool="true" visible="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Leiningen" order="3" sideWeight="0.20449679" visible="true" weight="0.32995737" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Leiningen" order="3" sideWeight="0.20342612" visible="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14498934" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14658849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -212,7 +212,26 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/machine_learning/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/machine_learning/core.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1309">
@@ -229,15 +248,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="85">
+          <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/lang/Compiler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="656" selection-start-line="656" selection-end-line="656" />
+          <folding>
+            <element signature="e#23782#23783#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/main.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="239" selection-start-line="239" selection-end-line="239" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="2658" column="23" lean-forward="true" selection-start-line="2658" selection-start-column="23" selection-end-line="2658" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/machine_learning/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        <state relative-caret-position="535">
+          <caret line="176" selection-start-line="176" selection-end-line="177" selection-end-column="29" />
         </state>
       </provider>
     </entry>
