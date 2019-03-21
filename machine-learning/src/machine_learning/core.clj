@@ -1,5 +1,13 @@
 (ns machine-learning.core
-  (:require [clojure.data.csv]))
+  (:require [clojure.data.csv]
+            [cortex.experiment.train :as train]
+            [cortex.experiment.util :as experiment.util]
+            [cortex.nn.execute :as execute]
+            [cortex.nn.layers :as layers]
+            [cortex.nn.network :as network]
+            [cortex.util :as util]
+            [cortex.optimize.adam :as adam]
+            [clojure.string :as string]))
 
 (def ^:const input-data-path "")
 (def ^:const non-player-stats-columns [:date :time :home-team :away-team :home-score :away-score :player :team :result])
@@ -33,6 +41,9 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Read CSV Files
 
+(defn date-or-time? [input]
+  (or (string/includes? input "/") (string/includes? input ":")))
+
 (defn read-csv [file-name]
   (let [[head & lines](with-open [reader (clojure.java.io/reader (str input-data-path file-name))]
                         (doall (clojure.data.csv/read-csv reader)))]
@@ -53,7 +64,7 @@
                         (let [column (first columns)
                               column-data (column row)]
                           (cond
-                            (numeric? column-data)
+                            (and (not (date-or-time? column-data)) (number? (read-string column-data)))
                             (csv-str->type (assoc row column (read-string column-data)) (rest columns))
 
                             (= column-data "")
@@ -82,7 +93,7 @@
    (if (empty? data) output
      (let [current-data (first data)
            stats (into [] (vals (select-keys current-data (remove-non-stat-keys (keys current-data)))))
-           label (vector (:result current-data))]
+           label (util/idx->one-hot (:result current-data) 2)]
        (initialise-dataset (rest data) (conj output (assoc {} :data stats :label label))) ))))
 
 (defn get-training-testing-indices
@@ -112,3 +123,70 @@
 
 (def dataset (split-dataset (initialise-dataset csv-data) 20))
 
+(defn secret-fn [ [x y] ]
+  [ (* x y)])
+
+(defn gen-random-seq-input []
+  (repeatedly (fn [] [(rand-int 10) (rand-int 10)])))
+
+(defn gen-random-seq []
+  (let [random-input (gen-random-seq-input)]
+    (map #(hash-map :data % :label (secret-fn %)) random-input)))
+
+(def dataset2 (assoc {} :training-set (take 20000 (gen-random-seq))
+                        :testing-set (take 20000 (gen-random-seq))))
+
+;; _____________________________________________________________________________________________________________________
+;; Neural Network Declaration and Training
+
+(def network-description
+  [(layers/input 16 1 1 :id :data)
+   (layers/linear->relu 32)
+   (layers/dropout 0.9)
+   (layers/linear->relu 20)
+   (layers/linear 2)
+   (layers/softmax :id :label)])
+
+(def network-description2
+  [(layers/input 2 1 1 :id :data)
+   (layers/linear->tanh 32)
+   (layers/tanh)
+   (layers/linear 1 :id :label)])
+
+(def network-params
+  {:optimizer   (adam/adam)
+   :batch-size  100
+   :epoch-count 50
+   :epoch-size  200000})
+
+(defn train [dataset description params]
+  (let [network (network/linear-network description)
+        train-original (:training-set dataset)
+        test-dataset (:testing-set dataset)
+        train-dataset (experiment.util/infinite-class-balanced-dataset train-original
+                                                                       :class-key :label
+                                                                       :epoch-size (:epoch-size params))]
+    (train/train-n network train-dataset test-dataset
+                   :batch-size (:batch-size params)
+                   :epoch-count (:epoch-count params)
+                   :optimizer (:optimizer params))))
+
+(def model (train dataset network-description network-params))
+(def model2 (train dataset2 network-description2 network-params))
+
+(defn best-result [[false-score true-score]]
+  (> true-score false-score))
+
+(defn test-model
+  ([model testing-dataset]
+   (test-model (execute/run model testing-dataset) testing-dataset 0 []))
+  ([results testing-dataset current-index test-results]
+   (if (= current-index (count testing-dataset))
+     test-results
+     (let [current-result (:label (nth results current-index))
+           current-result-best (best-result current-result)
+           current-testing (best-result (:label (nth results current-index)))]
+       (test-model results testing-dataset (inc current-index)
+         (conj test-results (assoc {} :prediction (assoc {} :scores current-result
+                                                            :best current-result-best)
+                                      :actual current-testing :correct (= current-result-best current-testing))))))))
