@@ -3,9 +3,19 @@
             [etaoin.api :as web]
             [clojure.data.csv :as csv]))
 
+(def chrome-profile "/home/scott/.config/chromium/Default")
+(def chromium-location "/usr/bin/chromium-browser")
+
 (def match-listing-ids (assoc {} :loading-overlay "fs_overlay" :more-results "tournament-page-results-more"))
 (def nba-17-18-matches-url "https://www.scoreboard.com/uk/nba-2017-2018/results/")
 (def nba-16-17-matches-url "https://www.scoreboard.com/uk/nba-2016-2017/results/")
+(def nba-15-16-matches-url "https://www.scoreboard.com/uk/nba-2015-2016/results/")
+(def nba-14-15-matches-url "https://www.scoreboard.com/uk/nba-2014-2015/results/")
+(def nba-13-14-matches-url "https://www.scoreboard.com/uk/nba-2013-2014/results/")
+(def nba-12-13-matches-url "https://www.scoreboard.com/uk/nba-2012-2013/results/")
+(def nba-11-12-matches-url "https://www.scoreboard.com/uk/nba-2011-2012/results/")
+(def nba-10-11-matches-url "https://www.scoreboard.com/uk/nba-2010-2011/results/")
+
 (def nba-match-prefix-url "https://www.scoreboard.com/uk/match/")
 (def nba-match-player-stats-suffix-url "/#player-statistics;0")
 (def match-stats-ids (assoc {} :loading-overlay "preload-all" :player-table "tab-player-statistics-0-statistic"))
@@ -124,11 +134,11 @@
 
 (defn get-match-stats-html
   ([match-url ids] ; init without a driver, create a new one each time
-   (get-match-stats-html match-url ids (web/chrome-headless) false))
+   (get-match-stats-html match-url ids (web/phantom) false))
   ([match-url ids driver] ; init with a driver, recycle the same one
    (get-match-stats-html match-url ids driver true))
   ([match-url ids driver recycle-driver?]
-  (let [player-table-id (:player-table ids)]
+   (let [player-table-id (:player-table ids)]
     (do (web/go driver match-url)
         ; wait for data to load before continuing
         (web/wait-invisible driver {:id (:loading-overlay ids)})
@@ -152,8 +162,7 @@
 (defn get-match-stats [match-stats-data]
   (let [html-snippet (html/html-snippet match-stats-data)
         stats-table-raw (second (html/select
-                 (html/select html-snippet [:div#tab-player-statistics-0-statistic])
-                 [:table]))
+                                  (html/select html-snippet [:div#tab-player-statistics-0-statistic]) [:table]))
         player-stats (expand-player-stats (parse-stats-table stats-table-raw))
         date-time (clojure.string/split (first (:content (last (html/select html-snippet [:td#utime])))) #" ")
         date (clojure.string/replace (first date-time) #"[.]" "/")
@@ -251,7 +260,7 @@
 ; disposes of the driver every 100 pages, and creates a new one
 (defn partitioned-scrape
   ([match-urls match-stats-ids]
-  (partitioned-scrape match-urls match-stats-ids (web/chrome) 0 '() ))
+   (partitioned-scrape match-urls match-stats-ids (web/phantom) 0 '() ))
   ([match-urls match-stats-ids driver scrape-count data]
    (do (print (str "\n" (count match-urls) " matches left.\n"))
     (cond
@@ -259,7 +268,8 @@
        data
 
        (>= scrape-count 100)
-       (do (web/stop-driver driver) (web/close-window driver) (partitioned-scrape match-urls match-stats-ids (web/chrome) 0 data))
+       (do (web/stop-driver driver) (web/close-window driver)
+           (partitioned-scrape match-urls match-stats-ids (web/phantom) 0 data))
 
        :else
        (partitioned-scrape (rest match-urls) match-stats-ids driver (inc scrape-count)
@@ -287,7 +297,7 @@
         match-stats-htmls (filter identity
                                   (futures
                                     (fn [x] (map (fn [y] (get-match-stats-html y match-stats-ids)) x))
-                                      match-urls cores))
+                                    match-urls cores))
         stats (futures (fn [x] (map (fn [y] (get-match-stats y)) x))
                        match-stats-htmls)]
     stats))
@@ -323,7 +333,31 @@
            (scrape-all-match-results
              nba-17-18-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))
-(write-csv "nba-16-17-stats.csv"
+#_(write-csv "nba-16-17-stats.csv"
            (scrape-all-match-results
              nba-16-17-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+#_(write-csv "nba-15-16-stats.csv"
+           (scrape-all-match-results
+             nba-15-16-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+#_(write-csv "nba-14-15-stats.csv"
+           (scrape-all-match-results
+             nba-14-15-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+#_(write-csv "nba-13-14-stats.csv"
+           (scrape-all-match-results
+             nba-13-14-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+#_(write-csv "nba-12-13-stats.csv"
+           (scrape-all-match-results
+             nba-12-13-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+#_(write-csv "nba-11-12-stats.csv"
+           (scrape-all-match-results
+             nba-11-12-matches-url match-listing-ids nba-match-prefix-url
+             nba-match-player-stats-suffix-url match-stats-ids))
+#_(write-csv "nba-10-11-stats.csv"
+           (scrape-all-match-results
+             nba-10-11-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))
