@@ -10,12 +10,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sportseer_client/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="33" column="50" lean-forward="true" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+            <state relative-caret-position="166">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -31,6 +31,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>l</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -43,8 +48,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="width" value="1919" />
-    <option name="height" value="1049" />
+    <option name="width" value="1909" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -52,6 +57,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -75,7 +81,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -85,7 +90,7 @@
     <property name="project.structure.side.proportion" value="0.3137931" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="ReplState" timestamp="1553714334180">{:repl-history {:ide [], :local [{:command &quot;(def button (JButton. \&quot;SPORTS!\&quot;))&quot;, :offset 33, :ns &quot;user&quot;} {:command &quot;(def panel (doto (JPanel.)\n             (.add button)))&quot;, :offset 55, :ns &quot;user&quot;} {:command &quot;(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)\n             (.setVisible true)))&quot;, :offset 141, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton JOptionPane))\n(import 'java.awt.event.ActionListener)\n\n(defn say-hello []\n  (JOptionPane/showMessageDialog\n    nil \&quot;Hello, World!\&quot; \&quot;Greeting\&quot; JOptionPane/INFORMATION_MESSAGE))\n\n(def act (proxy [ActionListener] []\n           (actionPerformed [event] (say-hello))))\n\n(def button (doto (JButton. \&quot;Click Me!\&quot;)\n              (.setBounds 130 100 100 40)\n              (.addActionListener act)))\n\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)))\n;             (.setVisible true)))\n\n\n(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setVisible true)))&quot;, :offset 743, :ns &quot;user&quot;} {:command &quot;\n(defn say-hello []\n  (JOptionPane/showMessageDialog\n    nil \&quot;Hello, World!\&quot; \&quot;Greeting\&quot; JOptionPane/INFORMATION_MESSAGE))\n\n(def act (proxy [ActionListener] []\n           (actionPerformed [event] (say-hello))))\n\n(def button (doto (JButton. \&quot;Click Me!\&quot;)\n              (.setBounds 130 100 100 40)\n              (.addActionListener act)))\n\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)\n             (.setVisible true)))\n\n\n(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setVisible true)))&quot;, :offset 642, :ns &quot;user&quot;} {:command &quot;\n(import '(javax.swing JFrame JPanel JButton JOptionPane))\n(import 'java.awt.event.ActionListener)\n\n(defn say-hello []\n  (JOptionPane/showMessageDialog\n    nil \&quot;Hello, World!\&quot; \&quot;Greeting\&quot; JOptionPane/INFORMATION_MESSAGE))\n\n(def act (proxy [ActionListener] []\n           (actionPerformed [event] (say-hello))))\n\n(def button (doto (JButton. \&quot;Click Me!\&quot;)\n              (.setBounds 130 100 100 40)\n              (.addActionListener act)))\n\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)\n             (.setVisible true)))\n\n\n(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setVisible true)))&quot;, :offset 741, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton))&quot;, :offset 45, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton JOptionPane))&quot;, :offset 57, :ns &quot;user&quot;} {:command &quot;(import 'java.awt.event.ActionListener)&quot;, :offset 39, :ns &quot;user&quot;} {:command &quot;(import javax.swing)&quot;, :offset 20, :ns &quot;user&quot;} {:command &quot;(import javax.swing.JFrame)&quot;, :offset 27, :ns &quot;user&quot;} {:command &quot;(import 'javax.swing.JFrame)&quot;, :offset 28, :ns &quot;user&quot;} {:command &quot;(def frame (JFrame. \&quot;SportSeer\&quot;))&quot;, :offset 33, :ns &quot;user&quot;} {:command &quot;(require 'javax.swing)&quot;, :offset 22, :ns &quot;user&quot;} {:command &quot;(require 'javax.swing.JFrame)&quot;, :offset 29, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton))\n(def button (JButton. \&quot;Click Me!\&quot;))\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 200 200)\n             (.setContentPane panel)\n             (.setVisible true)))&quot;, :offset 281, :ns &quot;user&quot;} {:command &quot;(import 'javax.swing.JFrame)\n(def frame (JFrame. \&quot;Hello Frame\&quot;))\n(.setSize frame 200 200)\n(.setVisible frame true)&quot;, :offset 114, :ns &quot;user&quot;} {:command &quot;(selection lb)&quot;, :offset 14, :ns &quot;sportseer-client.core&quot;} {:command &quot;(selection! lb 'all-frames)&quot;, :offset 27, :ns &quot;sportseer-client.core&quot;} {:command &quot;(-&gt; 'seesaw.core ns-publics keys sort)&quot;, :offset 38, :ns &quot;sportseer-client.core&quot;} {:command &quot;(type (-&gt; 'seesaw.core ns-publics keys sort))&quot;, :offset 45, :ns &quot;sportseer-client.core&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1553788104528">{:repl-history {:ide [], :local [{:command &quot;(def button (JButton. \&quot;SPORTS!\&quot;))&quot;, :offset 33, :ns &quot;user&quot;} {:command &quot;(def panel (doto (JPanel.)\n             (.add button)))&quot;, :offset 55, :ns &quot;user&quot;} {:command &quot;(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)\n             (.setVisible true)))&quot;, :offset 141, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton JOptionPane))\n(import 'java.awt.event.ActionListener)\n\n(defn say-hello []\n  (JOptionPane/showMessageDialog\n    nil \&quot;Hello, World!\&quot; \&quot;Greeting\&quot; JOptionPane/INFORMATION_MESSAGE))\n\n(def act (proxy [ActionListener] []\n           (actionPerformed [event] (say-hello))))\n\n(def button (doto (JButton. \&quot;Click Me!\&quot;)\n              (.setBounds 130 100 100 40)\n              (.addActionListener act)))\n\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)))\n;             (.setVisible true)))\n\n\n(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setVisible true)))&quot;, :offset 743, :ns &quot;user&quot;} {:command &quot;\n(defn say-hello []\n  (JOptionPane/showMessageDialog\n    nil \&quot;Hello, World!\&quot; \&quot;Greeting\&quot; JOptionPane/INFORMATION_MESSAGE))\n\n(def act (proxy [ActionListener] []\n           (actionPerformed [event] (say-hello))))\n\n(def button (doto (JButton. \&quot;Click Me!\&quot;)\n              (.setBounds 130 100 100 40)\n              (.addActionListener act)))\n\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)\n             (.setVisible true)))\n\n\n(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setVisible true)))&quot;, :offset 642, :ns &quot;user&quot;} {:command &quot;\n(import '(javax.swing JFrame JPanel JButton JOptionPane))\n(import 'java.awt.event.ActionListener)\n\n(defn say-hello []\n  (JOptionPane/showMessageDialog\n    nil \&quot;Hello, World!\&quot; \&quot;Greeting\&quot; JOptionPane/INFORMATION_MESSAGE))\n\n(def act (proxy [ActionListener] []\n           (actionPerformed [event] (say-hello))))\n\n(def button (doto (JButton. \&quot;Click Me!\&quot;)\n              (.setBounds 130 100 100 40)\n              (.addActionListener act)))\n\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 800 800)\n             (.setContentPane panel)\n             (.setVisible true)))\n\n\n(def frame (doto (JFrame. \&quot;SportSeer\&quot;)\n             (.setSize 800 800)\n             (.setVisible true)))&quot;, :offset 741, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton))&quot;, :offset 45, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton JOptionPane))&quot;, :offset 57, :ns &quot;user&quot;} {:command &quot;(import 'java.awt.event.ActionListener)&quot;, :offset 39, :ns &quot;user&quot;} {:command &quot;(import javax.swing)&quot;, :offset 20, :ns &quot;user&quot;} {:command &quot;(import javax.swing.JFrame)&quot;, :offset 27, :ns &quot;user&quot;} {:command &quot;(import 'javax.swing.JFrame)&quot;, :offset 28, :ns &quot;user&quot;} {:command &quot;(def frame (JFrame. \&quot;SportSeer\&quot;))&quot;, :offset 33, :ns &quot;user&quot;} {:command &quot;(require 'javax.swing)&quot;, :offset 22, :ns &quot;user&quot;} {:command &quot;(require 'javax.swing.JFrame)&quot;, :offset 29, :ns &quot;user&quot;} {:command &quot;(import '(javax.swing JFrame JPanel JButton))\n(def button (JButton. \&quot;Click Me!\&quot;))\n(def panel (doto (JPanel.)\n             (.add button)))\n(def frame (doto (JFrame. \&quot;Hello Frame\&quot;)\n             (.setSize 200 200)\n             (.setContentPane panel)\n             (.setVisible true)))&quot;, :offset 281, :ns &quot;user&quot;} {:command &quot;(import 'javax.swing.JFrame)\n(def frame (JFrame. \&quot;Hello Frame\&quot;))\n(.setSize frame 200 200)\n(.setVisible frame true)&quot;, :offset 114, :ns &quot;user&quot;} {:command &quot;(selection lb)&quot;, :offset 14, :ns &quot;sportseer-client.core&quot;} {:command &quot;(selection! lb 'all-frames)&quot;, :offset 27, :ns &quot;sportseer-client.core&quot;} {:command &quot;(-&gt; 'seesaw.core ns-publics keys sort)&quot;, :offset 38, :ns &quot;sportseer-client.core&quot;} {:command &quot;(type (-&gt; 'seesaw.core ns-publics keys sort))&quot;, :offset 45, :ns &quot;sportseer-client.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -143,19 +148,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1919" height="1049" extended-state="4" />
+    <frame x="0" y="0" width="1909" height="1050" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15589963" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15780999" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -163,16 +165,19 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info active="true" anchor="right" id="REPL" sideWeight="0.8153348" side_tool="true" visible="true" weight="0.34596902" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Leiningen" sideWeight="0.18466523" visible="true" weight="0.34596902" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32901832" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49892008" weight="0.24932003" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info active="true" anchor="right" id="REPL" order="6" sideWeight="0.815534" side_tool="true" visible="true" weight="0.34567901" />
+      <window_info anchor="right" id="Leiningen" order="7" sideWeight="0.18446602" visible="true" weight="0.34567901" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
     </layout>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -187,17 +192,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sportseer_client/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sportseer_client/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="33" column="50" lean-forward="true" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
         </state>
       </provider>
     </entry>
