@@ -43,6 +43,17 @@
 (def temp-datasets-list (listbox :model (-> datasets-list sort)))
 (selection temp-datasets-list {:multi? false})
 
+(def models-list ["NBA Model 1", "NBA Model 2", "NBA Model 3"])
+(def temp-models-list (listbox :model (-> models-list sort)))
+(selection temp-models-list {:multi? false})
+
+;; _____________________________________________________________________________________________________________________
+;; Scraper Menu
+
+(def scraper-menu
+  (styled-text :text "The Scraper has not yet been integrated into the GUI client."
+               :wrap-lines? true :enabled? false :background transparent :foreground default-text-colour))
+
 ;; _____________________________________________________________________________________________________________________
 ;; Dataset Menu
 
@@ -66,6 +77,8 @@
 ;; _____________________________________________________________________________________________________________________
 ;; Training Menu
 
+;; ---------------------------------------------------------------------------------------------------------------------
+;; New Model Sub Menu
 (def new-model-buttons
   (let [bg (button-group)]
     (flow-panel :items [(button :id "change-dataset-folder-button" :class :type :group bg :mnemonic \f
@@ -75,11 +88,32 @@
                                 :size [400 :by 31])])))
 
 (def create-new-model-menu
-  (border-panel :north (styled-text :text "Select the dataset you want to use on the new model."
+  (border-panel :north (styled-text :text "Select the Dataset you want to use on the new model."
                                     :wrap-lines? true :enabled? false
                                     :background transparent :foreground default-text-colour)
                 :center (scrollable temp-datasets-list)
                 :south new-model-buttons))
+
+;; ---------------------------------------------------------------------------------------------------------------------
+;; Existing Model Sub Menu
+
+(def existing-model-buttons
+  (let [bg (button-group)]
+    (flow-panel :items [(button :id "change-existing-model-folder-button" :class :type :group bg :mnemonic \f
+                                :text "Change Model Folder")
+                        (button :id "train-start-button" :class :type :group bg :mnemonic \s
+                                :text "Start Training"
+                                :size [400 :by 31])])))
+
+(def existing-model-menu
+  (border-panel :north (styled-text :text "Select the Model you want to train."
+                                    :wrap-lines? true :enabled? false
+                                    :background transparent :foreground default-text-colour)
+                :center (scrollable temp-models-list)
+                :south existing-model-buttons))
+
+;; ---------------------------------------------------------------------------------------------------------------------
+;; Main Training Menu
 
 (defn reset-training-menu-buttons [e]
   (config! (select f [:#new-model-button]) :foreground default-text-colour)
@@ -94,7 +128,7 @@
                                                     (reset-training-menu-buttons %) (set-selected-colour %))])
                         (button :id "train-model-button" :class :type :group bg :mnemonic \t
                                 :text "Train Existing Model"
-                                :listen [:action #(do (change-menu (training-menu (label "Placeholder")))
+                                :listen [:action #(do (change-menu (training-menu existing-model-menu))
                                                       (reset-training-menu-buttons %) (set-selected-colour %))])])))
 
 (def training-menu-default
@@ -107,13 +141,6 @@
                             :north training-menu-buttons
                             :center (separator)
                             :south sub-menu)))
-
-;; _____________________________________________________________________________________________________________________
-;; Scraper Menu
-
-(def scraper-menu
-  (styled-text :text "The Scraper has not yet been integrated into the GUI client."
-               :wrap-lines? true :enabled? false :background transparent :foreground default-text-colour))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Main Menu Functionality
