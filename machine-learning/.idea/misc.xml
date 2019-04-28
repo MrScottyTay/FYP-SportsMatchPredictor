@@ -4,10 +4,11 @@
     <option name="projectFiles">
       <list>
         <option value="file://$PROJECT_DIR$/project.clj" />
+        <option value="file:///media/scott/Storage/dev/FYP-SportsMatchPredictor/machine-learning/project.clj" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="10" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

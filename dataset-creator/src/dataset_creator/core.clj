@@ -32,6 +32,9 @@
 (defn averages [data]
   (float ((partial (fn [x] (/ (reduce + x) (count x)))) data)))
 
+;flattens the data structure after conj-ing
+(defn flatten-conj [a b] (flatten (conj a b)))
+
 ;; _____________________________________________________________________________________________________________________
 ;; Ordering Data
 
@@ -93,10 +96,25 @@
   (let [team-grouped-data (group-data-by-x data :team)]
     (flatten (vals (select-keys team-grouped-data (remove (fn [x] (.contains [:0] x)) (keys team-grouped-data)))))))
 
+(defn import-csv [file-name] (remove-all-star-matches (csv-str->type (read-csv file-name))))
+
+
 #_(def csv-data (remove-all-star-matches (csv-str->type (read-csv "nba-17-18-stats.csv"))))
 #_(def csv-data-match-0 (remove-all-star-matches (csv-str->type (read-csv "nba-16-17-stats.csv"))))
 
-(def data-keys (keys (first csv-data)))
+#_(def data-keys (keys (first csv-data)))
+
+;; _____________________________________________________________________________________________________________________
+;; Combine .csv files
+
+(defn multi-import-csv
+  ([file-names] (multi-import-csv (first file-names) (rest file-names) []))
+  ([current-file-name file-names data]
+   (let [csv-data (import-csv current-file-name)]
+     (if (empty? file-names)
+       (flatten-conj csv-data data)
+       (multi-import-csv (first file-names) (rest file-names) (flatten-conj csv-data data))))))
+
 
 ;; _____________________________________________________________________________________________________________________
 ;; Write .csv file
@@ -187,6 +205,36 @@
          (map? past) (prior-averages- (assoc current column (column past)) past (rest columns))
          :else (prior-averages- (assoc current column (averages (map column past))) past (rest columns)))))))
 
+;; _____________________________________________________________________________________________________________________
+;; Averaged prior stats for a player - revision 2 (remove first match)
+
+(declare prior-averages-rf)
+
+(defn dataset-prior-averages-rf
+  ([data] (dataset-prior-averages-rf data (keys data)))
+  ([data players]
+   (if (empty? players) (flatten (vals data))
+     (let [player (first players)
+           player-data (player data)]
+       (if (> (count player-data) 1)
+         (dataset-prior-averages-rf (assoc data player (prior-averages-rf player-data)) (rest players))
+         (dataset-prior-averages-rf data (rest players)))))))
+
+(defn prior-averages-rf
+  ([player-data] (prior-averages-rf (first player-data) (rest player-data) [] []))
+  ([current future past data]
+   (cond (empty? future) (conj data (prior-averages-rf current past))
+         (empty? past) (prior-averages-rf (first future) (rest future) (conj past current) data)
+         :else (prior-averages-rf
+                 (first future) (rest future) (conj past current) (conj data (prior-averages-rf current past)))))
+  ([current past]
+   (do #_(print "\n" current "\n")
+       (prior-averages-rf current past (remove-non-stat-keys (keys current)))))
+  ([current past columns]
+   (if (empty? columns) current
+     (let [column (first columns)]
+       (prior-averages-rf (assoc current column (averages (map column past))) past (rest columns))))))
+
 #_(def prior-averaged-data (dataset-prior-averages (group-data-by-x csv-data :player) player-total-averages-16-17))
 
 ;; _____________________________________________________________________________________________________________________
@@ -215,7 +263,7 @@
   (* (column player-data) (:weight-value player-data)))
 (defn weighted-average [data column]
   (let [weighted-stats (map (fn [x] (weighted-stat x column)) data)]
-    (do (/ (reduce + weighted-stats) (count weighted-stats)) )))
+    (do (/ (reduce + weighted-stats) (count weighted-stats)))))
 
 ;; biased aggregation that takes into account the average minutes played per player
 (defn aggr-minutes
@@ -253,7 +301,7 @@
      (let [current-datetime (first datetimes)]
        (aggregate-players- (assoc data current-datetime (aggr-fn (current-datetime data))) (rest datetimes) aggr-fn))))
 
-(def aggregated-data (aggregate-players prior-averaged-data aggr-minutes))
+#_(def aggregated-data (aggregate-players prior-averaged-data aggr-minutes))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Combine Match Data into a single row
@@ -282,9 +330,13 @@
      (combine-match-data- home-grouped-data (keys home-grouped-data))))
   ([data home-teams]
    (if (empty? home-teams) data
-     (let [current-home-team (first home-teams)]
-       (combine-match-data-
-         (assoc data current-home-team (combine-match-data-- (current-home-team data))) (rest home-teams))))))
+     (let [current-home-team (first home-teams)
+           current-home-team-data (current-home-team data)]
+       (if (= (count current-home-team-data) 2) ;; check because for some reason an oppossing team was missing
+         (combine-match-data-
+           (assoc data current-home-team (combine-match-data-- current-home-team-data)) (rest home-teams))
+         (combine-match-data- data (rest home-teams)))))))
+
 
 (defn combine-match-data--
   ([data]
@@ -294,34 +346,37 @@
   ([home-team away-team columns]
    (if (empty? columns) home-team
          (let [column (first columns)]
+           #_(print "\n" (:team home-team) "\n" (:team away-team) "\n" (:date home-team) "\n")
            (combine-match-data--
              (assoc home-team column (- (column home-team) (column away-team))) away-team (rest columns))))))
 
-(def combined-data (combine-match-data aggregated-data))
+#_(def combined-data (combine-match-data aggregated-data))
 
 ;; _____________________________________________________________________________________________________________________
 
-(def player-total-averages-16-17
-  (dataset-total-averages
-    (group-data-by-x (remove-all-star-matches (csv-str->type (read-csv "nba-16-17-stats.csv"))) :player)))
+#_(def csv-data (remove-all-star-matches (csv-str->type (read-csv "nba-15-16-stats.csv"))))
 
-(def csv-data (remove-all-star-matches (csv-str->type (read-csv "nba-17-18-stats.csv"))))
+#_(def prior-averaged-data (dataset-prior-averages-rf (group-data-by-x csv-data :player)))
 
-(def prior-averaged-data-m0 (dataset-prior-averages (group-data-by-x csv-data :player) player-total-averages-16-17))
-(def prior-averaged-data (dataset-prior-averages (group-data-by-x csv-data :player)))
+#_(def aggregated-data (aggregate-players prior-averaged-data))
+#_(def aggregated-data-mins (aggregate-players prior-averaged-data aggr-minutes))
 
-(def aggregated-data-m0 (aggregate-players prior-averaged-data-m0))
-(def aggregated-data-m0-mins (aggregate-players prior-averaged-data-m0 aggr-minutes))
+#_(def combined-data (combine-match-data aggregated-data))
+#_(def combined-data-mins (combine-match-data aggregated-data-mins))
+
+#_(write-csv "nba-17-18_prior-averages_unbiased-aggr.csv" combined-data aggregated-dataset-columns)
+#_(write-csv "nba-17-18_prior-averages_mins-aggr.csv" combined-data-mins aggregated-dataset-columns)
+
+(def csv-data (multi-import-csv ["nba-13-14-stats.csv" "nba-14-15-stats.csv" "nba-15-16-stats.csv"
+                                 "nba-16-17-stats.csv" "nba-17-18-stats.csv"]))
+
+(def prior-averaged-data (dataset-prior-averages-rf (group-data-by-x csv-data :player)))
 
 (def aggregated-data (aggregate-players prior-averaged-data))
 (def aggregated-data-mins (aggregate-players prior-averaged-data aggr-minutes))
 
-(def combined-data-m0 (combine-match-data aggregated-data-m0))
-(def combined-data-m0-mins (combine-match-data aggregated-data-m0-mins))
 (def combined-data (combine-match-data aggregated-data))
 (def combined-data-mins (combine-match-data aggregated-data-mins))
 
-(write-csv "nba-17-18_prior-averages-m0_unbiased-aggr.csv" combined-data-m0 aggregated-dataset-columns)
-(write-csv "nba-17-18_prior-averages-m0_mins-aggr.csv" combined-data-m0-mins aggregated-dataset-columns)
-(write-csv "nba-17-18_prior-averages_unbiased-aggr.csv" combined-data aggregated-dataset-columns)
-(write-csv "nba-17-18_prior-averages_mins-aggr.csv" combined-data-mins aggregated-dataset-columns)
+(write-csv "nba-13-18_prior-averages_unbiased-aggr.csv" combined-data aggregated-dataset-columns)
+(write-csv "nba-13-18_prior-averages_mins-aggr.csv" combined-data aggregated-dataset-columns)

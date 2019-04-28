@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/machine-learning.iml" filepath="$PROJECT_DIR$/machine-learning.iml" />
+      <module fileurl="file:///media/scott/Storage/dev/FYP-SportsMatchPredictor/machine-learning/machine-learning-1.iml" filepath="/media/scott/Storage/dev/FYP-SportsMatchPredictor/machine-learning/machine-learning-1.iml" />
     </modules>
   </component>
 </project>

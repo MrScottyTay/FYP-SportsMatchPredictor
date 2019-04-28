@@ -12,44 +12,42 @@
 (def nba-15-16-matches-url "https://www.scoreboard.com/uk/nba-2015-2016/results/")
 (def nba-14-15-matches-url "https://www.scoreboard.com/uk/nba-2014-2015/results/")
 (def nba-13-14-matches-url "https://www.scoreboard.com/uk/nba-2013-2014/results/")
-(def nba-12-13-matches-url "https://www.scoreboard.com/uk/nba-2012-2013/results/")
-(def nba-11-12-matches-url "https://www.scoreboard.com/uk/nba-2011-2012/results/")
-(def nba-10-11-matches-url "https://www.scoreboard.com/uk/nba-2010-2011/results/")
 
 (def nba-match-prefix-url "https://www.scoreboard.com/uk/match/")
 (def nba-match-player-stats-suffix-url "/#player-statistics;0")
 (def match-stats-ids (assoc {} :loading-overlay "preload-all" :player-table "tab-player-statistics-0-statistic"))
 
 (def team-abbrevs ^:const (assoc {} :atl "Atlanta Hawks"
-                                   :bro "Brooklyn Nets"
-                                   :bos "Boston Celtics"
-                                   :cha "Charlotte Hornets"
-                                   :chi "Chicago Bulls"
-                                   :cle "Cleveland Cavaliers"
-                                   :dal "Dallas Mavericks"
-                                   :den "Denver Nuggets"
-                                   :det "Detroit Pistons"
-                                   :gsw "Golden State Warriors"
-                                   :hou "Houston Rockets"
-                                   :ind "Indiana Pacers"
-                                   :lac "Los Angeles Clippers"
-                                   :lal "Los Angeles Lakers"
-                                   :mem "Memphis Grizzlies"
-                                   :mia "Miami Heat"
-                                   :mil "Milwaukee Bucks"
-                                   :min "Minnesota Timberwolves"
-                                   :nop "New Orleans Pelicans"
-                                   :nyk "New York Knicks"
-                                   :okl "Oklahoma City Thunder"
-                                   :orl "Orlando Magic"
-                                   :phi "Philadelpia 76ers"
-                                   :pho "Phoenix Suns"
-                                   :por "Portland Trail Blazers"
-                                   :sac "Sacramento Kings"
-                                   :sas "San Antonio Spurs"
-                                   :tor "Toronto Raptors"
-                                   :uta "Utah Jazz"
-                                   :was "Washington Wizards"))
+                                    :bro "Brooklyn Nets"
+                                    :bos "Boston Celtics"
+                                    :cha "Charlotte Hornets"
+                                    :chi "Chicago Bulls"
+                                    :cle "Cleveland Cavaliers"
+                                    :dal "Dallas Mavericks"
+                                    :den "Denver Nuggets"
+                                    :det "Detroit Pistons"
+                                    :gsw "Golden State Warriors"
+                                    :hou "Houston Rockets"
+                                    :ind "Indiana Pacers"
+                                    :lac "Los Angeles Clippers"
+                                    :lal "Los Angeles Lakers"
+                                    :mem "Memphis Grizzlies"
+                                    :mia "Miami Heat"
+                                    :mil "Milwaukee Bucks"
+                                    :min "Minnesota Timberwolves"
+                                    :nop "New Orleans Pelicans"
+                                    :nyk "New York Knicks"
+                                    :okl "Oklahoma City Thunder"
+                                    :okc "Oklahoma City Thunder"
+                                    :orl "Orlando Magic"
+                                    :phi "Philadelpia 76ers"
+                                    :pho "Phoenix Suns"
+                                    :por "Portland Trail Blazers"
+                                    :sac "Sacramento Kings"
+                                    :sas "San Antonio Spurs"
+                                    :tor "Toronto Raptors"
+                                    :uta "Utah Jazz"
+                                    :was "Washington Wizards"))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Helper functions
@@ -134,7 +132,7 @@
 
 (defn get-match-stats-html
   ([match-url ids] ; init without a driver, create a new one each time
-   (get-match-stats-html match-url ids (web/phantom) false))
+   (get-match-stats-html match-url ids (web/chrome) false))
   ([match-url ids driver] ; init with a driver, recycle the same one
    (get-match-stats-html match-url ids driver true))
   ([match-url ids driver recycle-driver?]
@@ -260,7 +258,7 @@
 ; disposes of the driver every 100 pages, and creates a new one
 (defn partitioned-scrape
   ([match-urls match-stats-ids]
-   (partitioned-scrape match-urls match-stats-ids (web/phantom) 0 '() ))
+   (partitioned-scrape match-urls match-stats-ids (web/chrome) 0 '() ))
   ([match-urls match-stats-ids driver scrape-count data]
    (do (print (str "\n" (count match-urls) " matches left.\n"))
     (cond
@@ -268,8 +266,8 @@
        data
 
        (>= scrape-count 100)
-       (do (web/stop-driver driver) (web/close-window driver)
-           (partitioned-scrape match-urls match-stats-ids (web/phantom) 0 data))
+       (do (web/close-window driver) (web/stop-driver driver)
+           (partitioned-scrape match-urls match-stats-ids (web/chrome) 0 data))
 
        :else
        (partitioned-scrape (rest match-urls) match-stats-ids driver (inc scrape-count)
@@ -329,7 +327,7 @@
     (with-open [file (clojure.java.io/writer path)]
       (csv/write-csv file (cons headers rows)))))
 
-(write-csv "nba-17-18-stats.csv"
+#_(write-csv "nba-17-18-stats.csv"
            (scrape-all-match-results
              nba-17-18-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))
@@ -337,27 +335,15 @@
            (scrape-all-match-results
              nba-16-17-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))
-#_(write-csv "nba-15-16-stats.csv"
+(write-csv "nba-15-16-stats.csv"
            (scrape-all-match-results
              nba-15-16-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))
-#_(write-csv "nba-14-15-stats.csv"
+(write-csv "nba-14-15-stats.csv"
            (scrape-all-match-results
              nba-14-15-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))
-#_(write-csv "nba-13-14-stats.csv"
+(write-csv "nba-13-14-stats.csv"
            (scrape-all-match-results
              nba-13-14-matches-url match-listing-ids nba-match-prefix-url
-             nba-match-player-stats-suffix-url match-stats-ids))
-#_(write-csv "nba-12-13-stats.csv"
-           (scrape-all-match-results
-             nba-12-13-matches-url match-listing-ids nba-match-prefix-url
-             nba-match-player-stats-suffix-url match-stats-ids))
-#_(write-csv "nba-11-12-stats.csv"
-           (scrape-all-match-results
-             nba-11-12-matches-url match-listing-ids nba-match-prefix-url
-             nba-match-player-stats-suffix-url match-stats-ids))
-#_(write-csv "nba-10-11-stats.csv"
-           (scrape-all-match-results
-             nba-10-11-matches-url match-listing-ids nba-match-prefix-url
              nba-match-player-stats-suffix-url match-stats-ids))

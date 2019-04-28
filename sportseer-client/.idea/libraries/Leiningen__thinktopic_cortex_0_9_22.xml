@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: thinktopic/cortex:0.9.22">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/thinktopic/cortex/0.9.22/cortex-0.9.22.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
