@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SPORTSEER Client" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2ddd30fa-5ea6-4b10-8cfe-62f81ff0bce3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -11,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportseer_client/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="441" column="56" lean-forward="true" selection-start-line="441" selection-start-column="56" selection-end-line="441" selection-end-column="56" />
+            <state relative-caret-position="633">
+              <caret line="47" column="100" selection-start-line="47" selection-start-column="100" selection-end-line="47" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -23,8 +28,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportseer_client/machine_learning.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="289" column="53" lean-forward="true" selection-start-line="289" selection-start-column="53" selection-end-line="289" selection-end-column="53" />
+            <state relative-caret-position="534">
+              <caret line="146" column="27" selection-start-line="146" selection-start-column="27" selection-end-line="146" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/thinktopic/cortex/0.9.22/cortex-0.9.22.jar!/cortex/nn/execute.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
         </entry>
@@ -32,17 +46,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportseer_client/dataset_creator.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="311" column="29" selection-start-line="311" selection-start-column="29" selection-end-line="311" selection-end-column="29" />
+            <state relative-caret-position="501">
+              <caret line="291" column="33" lean-forward="true" selection-start-line="291" selection-start-column="33" selection-end-line="291" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sportseer_client/scraper.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4995">
-              <caret line="333" column="13" selection-start-line="333" selection-start-column="13" selection-end-line="333" selection-end-column="13" />
+            <state relative-caret-position="206">
+              <caret line="83" selection-start-line="83" selection-end-line="96" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -50,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+            <state relative-caret-position="105">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -72,6 +86,10 @@
       <find>pan</find>
       <find>resize-width!</find>
       <find>resize-widt</find>
+      <find>clojure.java.io</find>
+      <find>sort-all-players-by-date</find>
+      <find>print</find>
+      <find>:Date</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -83,15 +101,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sportseer_client/scraper.clj" />
+        <option value="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/sportseer_client/csv_helpers.clj" />
         <option value="$PROJECT_DIR$/src/sportseer_client/dataset_creator.clj" />
-        <option value="$PROJECT_DIR$/src/sportseer_client/machine_learning.clj" />
+        <option value="$PROJECT_DIR$/src/sportseer_client/scraper.clj" />
         <option value="$PROJECT_DIR$/src/sportseer_client/core.clj" />
+        <option value="$PROJECT_DIR$/src/sportseer_client/machine_learning.clj" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2" />
     <option name="width" value="1918" />
     <option name="height" value="1046" />
@@ -102,14 +122,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="sportseer-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="sportseer-client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sportseer-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sportseer-client" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sportseer-client" type="b2602c69:ProjectViewProjectNode" />
@@ -129,19 +154,20 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556306293039" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556796703119" />
     <property name="cursive.last.file.extension./media/scott/Storage/dev/FYP-SportsMatchPredictor/sportseer-client/src" value="clj" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3137931" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="Clojure.IDE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1556306427973">{:repl-history {:ide [], :local [{:command &quot;(:testing-set ds)&quot;, :offset 17, :ns &quot;sportseer-client.core&quot;} {:command &quot;selections&quot;, :offset 10, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(assoc {} :data %) selections)&quot;, :offset 36, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(assoc {} :data %) (vector selections))&quot;, :offset 45, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/test-model (:model model) (map #(assoc {} :data %) (vector selections)))&quot;, :offset 77, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/make-prediction (:model model) (map #(assoc {} :data %) selections))&quot;, :offset 73, :ns &quot;sportseer-client.core&quot;} {:command &quot;(vector? (first selections))&quot;, :offset 28, :ns &quot;sportseer-client.core&quot;} {:command &quot;(if (vector? (first selections))\n  selections\n  (vector selections))&quot;, :offset 68, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def stats (if (vector? (first selections))\n             selections\n             (vector selections)))&quot;, :offset 102, :ns &quot;sportseer-client.core&quot;} {:command &quot;stats&quot;, :offset 5, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(assoc {} :data %) stats)&quot;, :offset 31, :ns &quot;sportseer-client.core&quot;} {:command &quot;(execute/run (:model model) (map #(assoc {} :data %) stats))&quot;, :offset 60, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def {:home [[{:column \&quot;a\&quot; :value 1}\n              {:column \&quot;b\&quot; :value 2}\n              {:column \&quot;c\&quot; :value 1.2}]\n             [{:column \&quot;a\&quot; :value 3}\n              {:column \&quot;b\&quot; :value 4}\n              {:column \&quot;c\&quot; :value 3.2}]]})&quot;, :offset 230, :ns &quot;user&quot;} {:command &quot;(def nodes {:home [[{:column \&quot;a\&quot; :value 1}\n                    {:column \&quot;b\&quot; :value 2}\n                    {:column \&quot;c\&quot; :value 1.2}]\n                   [{:column \&quot;a\&quot; :value 3}\n                    {:column \&quot;b\&quot; :value 4}\n                    {:column \&quot;c\&quot; :value 3.2}]]})&quot;, :offset 266, :ns &quot;user&quot;} {:command &quot;(map #(map (fn [x] (str (:column x) \&quot;-\&quot; (:value x) %) nodes)))&quot;, :offset 62, :ns &quot;user&quot;} {:command &quot;(map #(map (fn [x] (str (:column x) \&quot;-\&quot; (:value x))) %) nodes)&quot;, :offset 62, :ns &quot;user&quot;} {:command &quot;(map #(print %) nodes)&quot;, :offset 13} {:command &quot;(map #(map (fn [x] (str (:column x) \&quot;-\&quot; (:value x))) %) (:home nodes))&quot;, :offset 70, :ns &quot;user&quot;} {:command &quot;{:home [[{:column \&quot;a\&quot;, :value 1} {:column \&quot;b\&quot;, :value 2} {:column \&quot;c\&quot;, :value 1.2}]\n        [{:column \&quot;a\&quot;, :value 3} {:column \&quot;b\&quot;, :value 4} {:column \&quot;c\&quot;, :value 3.2}]]}&quot;, :offset 169, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def nodes {:home [[{:column \&quot;a\&quot;, :value 1} {:column \&quot;b\&quot;, :value 2} {:column \&quot;c\&quot;, :value 1.2}]\n                   [{:column \&quot;a\&quot;, :value 3} {:column \&quot;b\&quot;, :value 4} {:column \&quot;c\&quot;, :value 3.2}]]})&quot;, :offset 192, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-manual-selection-nodes nodes)&quot;, :offset 37, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-manual-selection-nodes nodes \&quot;away\&quot;)&quot;, :offset 44, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-manual-selection-nodes (:away nodes) \&quot;away\&quot;)&quot;, :offset 52, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-manual-selection-node (first (:away nodes)) \&quot;away\&quot; 0)&quot;, :offset 61, :ns &quot;sportseer-client.core&quot;} {:command &quot;(first (:away nodes))&quot;, :offset 21, :ns &quot;sportseer-client.core&quot;} {:command &quot;nodes&quot;, :offset 5, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-manual-selection-node (first (:home nodes)) \&quot;away\&quot; 0)&quot;, :offset 54} {:command &quot;(conj (create-manual-selection-nodes (:home nodes) \&quot;home\&quot;) (button :text \&quot;button\&quot;))&quot;, :offset 83, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-manual-selection-nodes (:home nodes) \&quot;home\&quot;)&quot;, :offset 52, :ns &quot;sportseer-client.core&quot;} {:command &quot;(type (create-manual-selection-nodes (:home nodes) \&quot;home\&quot;))&quot;, :offset 59, :ns &quot;sportseer-client.core&quot;} {:command &quot;(type (first (create-manual-selection-nodes (:home nodes) \&quot;home\&quot;)))&quot;, :offset 67, :ns &quot;sportseer-client.core&quot;} {:command &quot;(first (create-manual-selection-nodes (:home nodes) \&quot;home\&quot;))&quot;, :offset 60, :ns &quot;sportseer-client.core&quot;} {:command &quot;(count (create-manual-selection-nodes (:home nodes) \&quot;home\&quot;))&quot;, :offset 60, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def ff (frame))&quot;, :offset 16, :ns &quot;sportseer-client.core&quot;} {:command &quot;(config! ff :size [200 :by 200])&quot;, :offset 32, :ns &quot;sportseer-client.core&quot;} {:command &quot;(show! ff)&quot;, :offset 10, :ns &quot;sportseer-client.core&quot;} {:command &quot;(resize! ff :width 300)&quot;, :offset 23, :ns &quot;sportseer-client.core&quot;} {:command &quot;(resize! ff :height 600)&quot;, :offset 24, :ns &quot;sportseer-client.core&quot;} {:command &quot;(declare get-manual-selection-nodes-)\n(defn get-manual-selection-nodes\n  ([columns] (assoc {} :home (get-manual-selection-nodes columns \&quot;home\&quot; 0 [])\n                       :away (get-manual-selection-nodes columns \&quot;away\&quot; 0 [])))\n  ([columns side idx output]\n   (let [result (get-manual-selection-nodes columns (str \&quot;#selector-\&quot; side \&quot;-\&quot; idx \&quot;-\&quot;) {})]\n     (if result\n       (get-manual-selection-nodes columns side (inc idx) (conj output result))\n       output)))\n  ([columns id-prefix output]\n   (if (empty? columns)\n     output\n     (let [current-column (first columns)\n           ui-node (select f [(keyword (str id-prefix current-column))])]\n       (if ui-node\n         (get-manual-selection-nodes (rest columns) id-prefix\n                                     (assoc output (keyword current-column) (selection ui-node)))\n         nil)))))&quot;, :offset 842, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn create-player-node [columns]\n  (if (= 1 (count columns))\n    (assoc {} (keyword (first columns)) 0)\n    (merge (assoc {} (keyword (first columns)) 0) (create-player-node (rest columns)))))#&quot;, :offset 195, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn create-player-node [columns]\n  (if (= 1 (count columns))\n    (assoc {} (keyword (first columns)) 0)\n    (merge (assoc {} (keyword (first columns)) 0) (create-player-node (rest columns)))))&quot;, :offset 194, :ns &quot;sportseer-client.core&quot;} {:command &quot;(create-player-node [\&quot;a\&quot; \&quot;b\&quot; \&quot;c\&quot; \&quot;d\&quot; \&quot;e\&quot;])&quot;, :offset 42, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def sp-mod (spinner-model (float 0.0) :by 0.1))&quot;, :offset 48, :ns &quot;sportseer-client.core&quot;} {:command &quot;sp-mod&quot;, :offset 6, :ns &quot;sportseer-client.core&quot;} {:command &quot;(get-manual-selection-nodes columns)&quot;, :offset 36, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def remove-AVG-fn #(dissoc % :AVG))&quot;, :offset 36, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map remove-AVG-fn (:home (get-manual-selection-nodes)))&quot;, :offset 56, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map remove-AVG-fn (:home (get-manual-selection-nodes columns)))&quot;, :offset 64, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def avg-&gt;min-fn #(dissoc (assoc % :min (:AVG %)) :AVG))&quot;, :offset 56, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map avg-&gt;min-fn (:home (get-manual-selection-nodes columns)))&quot;, :offset 62, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/aggr-minutes (map avg-&gt;min-fn (:home (get-manual-selection-nodes columns))))&quot;, :offset 81, :ns &quot;sportseer-client.core&quot;} {:command &quot;(ds/aggr-minutes (map avg-&gt;min-fn (:home (get-manual-selection-nodes columns))))&quot;, :offset 80, :ns &quot;sportseer-client.core&quot;} {:command &quot;(dat/aggr-minutes (map avg-&gt;min-fn (:home (get-manual-selection-nodes columns))))&quot;, :offset 81, :ns &quot;sportseer-client.core&quot;} {:command &quot;(remove #(= % \&quot;AVG\&quot;) columns)&quot;, :offset 29, :ns &quot;sportseer-client.core&quot;} {:command &quot;(contains? columns \&quot;min\&quot;)&quot;, :offset 25, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn merge-manual-selections [home-data away-data columns]\n  (let [column (keyword (first columns))]\n    (if (= 1 (count columns))\n      (assoc {} column (- (column home-data) (column away-data)))\n      (merge (assoc {} column (- (column home-data) (column away-data)))\n             (merge-manual-selections home-data away-data (rest columns))))))\n\n(defn prepare-manual-selections\n  ([columns]\n   (let [selections (get-manual-selection-nodes columns)\n         home-data (prepare-manual-selections (:home selections) columns)\n         away-data (prepare-manual-selections (:away selections) columns)\n         merged-data (merge-manual-selections home-data away-data columns)]\n     (map #(% merged-data) (drop-last columns))))\n  ([selections columns]\n   (if (= 1 (count selections))\n     (map #(dissoc % :AVG) selections)\n     (let [selections (dat/aggr-minutes (map #(dissoc (assoc % :min (:AVG %)) :AVG) selections))]\n       (if (contains? columns \&quot;min\&quot;) (map #(dissoc % :min) selections) selections)))))&quot;, :offset 1005, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn prepare-manual-selections\n  ([columns]\n   (let [selections (get-manual-selection-nodes columns)\n         columns (drop-last columns)\n         home-data (prepare-manual-selections (:home selections) columns)\n         away-data (prepare-manual-selections (:away selections) columns)\n         merged-data (merge-manual-selections home-data away-data columns)]\n     (map #(% merged-data) columns)))\n  ([selections columns]\n   (if (= 1 (count selections))\n     (map #(dissoc % :AVG) selections)\n     (let [selections (dat/aggr-minutes (map #(dissoc (assoc % :min (:AVG %)) :AVG) selections))]\n       (if (contains? columns \&quot;min\&quot;) (map #(dissoc % :min) selections) selections)))))&quot;, :offset 680, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn merge-manual-selections [home-data away-data columns]\n  (let [column (keyword (first columns))]\n    (print column)\n    (if (= 1 (count columns))\n      (assoc {} column (- (column home-data) (column away-data)))\n      (merge (assoc {} column (- (column home-data) (column away-data)))\n             (merge-manual-selections home-data away-data (rest columns))))))&quot;, :offset 367, :ns &quot;sportseer-client.core&quot;} {:command &quot;\n(defn merge-manual-selections [home-data away-data columns]\n  (let [column (keyword (first columns))]\n    (do (print column)\n        (if (= 1 (count columns))\n          (assoc {} column (- (column home-data) (column away-data)))\n          (merge (assoc {} column (- (column home-data) (column away-data)))\n                 (merge-manual-selections home-data away-data (rest columns)))))))&quot;, :offset 389, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def columns [\&quot;pf\&quot; \&quot;fg\&quot; \&quot;reb\&quot; \&quot;or\&quot; \&quot;pts\&quot; \&quot;ast\&quot; \&quot;3pa\&quot; \&quot;fga\&quot; \&quot;3p\&quot; \&quot;st\&quot; \&quot;ft\&quot; \&quot;dr\&quot; \&quot;bs\&quot; \&quot;fta\&quot; \&quot;to\&quot; \&quot;AVG\&quot;])&quot;, :offset 102, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn merge-manual-selections [home-data away-data columns]\n  (let [column (keyword (first columns))]\n    (do (print column)\n        (if (= 1 (count columns))\n          (assoc {} column (- (column home-data) (column away-data)))\n          (merge (assoc {} column (- (column home-data) (column away-data)))\n                 (merge-manual-selections home-data away-data (rest columns)))))))&quot;, :offset 388, :ns &quot;sportseer-client.core&quot;} {:command &quot;\n(defn merge-manual-selections [home-data away-data columns]\n  (let [column (keyword (first columns))]\n    (do (print column)\n        (print home-data)\n        (print away-data)\n        (if (= 1 (count columns))\n          (assoc {} column (- (column home-data) (column away-data)))\n          (merge (assoc {} column (- (column home-data) (column away-data)))\n                 (merge-manual-selections home-data away-data (rest columns)))))))&quot;, :offset 441, :ns &quot;sportseer-client.core&quot;} {:command &quot;columns&quot;, :offset 7, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn prepare-manual-selections\n  ([columns]\n   (let [selections (get-manual-selection-nodes columns)\n         columns (drop-last columns)\n         home-data (first (prepare-manual-selections (:home selections) columns))\n         away-data (first (prepare-manual-selections (:away selections) columns))\n         merged-data (merge-manual-selections home-data away-data columns)]\n     (map #((keyword %) merged-data) columns)))\n  ([selections columns]\n   (if (= 1 (count selections))\n     (map #(dissoc % :AVG) selections)\n     (let [selections (dat/aggr-minutes (map #(dissoc (assoc % :min (:AVG %)) :AVG) selections))]\n       (if (contains? columns \&quot;min\&quot;) (map #(dissoc % :min) selections) selections)))))&quot;, :offset 706, :ns &quot;sportseer-client.core&quot;} {:command &quot;(prepare-manual-selections columns)&quot;, :offset 35, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def model (mac/load-model \&quot;data/models/Model.nippy\&quot;))&quot;, :offset 54, :ns &quot;sportseer-client.core&quot;} {:command &quot;model&quot;, :offset 5, :ns &quot;sportseer-client.core&quot;} {:command &quot;(keys model)&quot;, :offset 12, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % columns))) combined-data)]\n  (do (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 382, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % (:data-columns model))))\n                   combined-data)]\n  (do (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 527, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % (:data-columns model))))\n                   combined-data)]\n  (do (print combined-data) (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 549, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % (map keyword (:data-columns model)))))\n                   combined-data)]\n  (do (print combined-data) (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 563, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data ({:min 0.9513291788246505, :date \&quot;26/4/2019\&quot;, :pf -0.0019350252090295506, :fg 0.5150915008199402, :reb 0.2923881821640024, :or 0.014864301076547237, :time \&quot;10:00\&quot;, :pts 1.2389856679555544, :ast 0.5924082768537147, :3pa 0.5682397810819955, :fga 0.8438201364503168, :away-team \&quot;LA Clippers\&quot;, :3p 0.24715233126107372, :team \&quot;Golden State Warriors\&quot;, :st 0.11643766907765896, :ft -0.00750595042144564, :dr 0.29001190320323555, :bs 0.1760502008866499, :fta -0.04216871230283514, :home-team \&quot;Golden State Warriors\&quot;, :to 0.17605870139675328}))&quot;, :offset 545, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data '({:min 0.9513291788246505, :date \&quot;26/4/2019\&quot;, :pf -0.0019350252090295506, :fg 0.5150915008199402, :reb 0.2923881821640024, :or 0.014864301076547237, :time \&quot;10:00\&quot;, :pts 1.2389856679555544, :ast 0.5924082768537147, :3pa 0.5682397810819955, :fga 0.8438201364503168, :away-team \&quot;LA Clippers\&quot;, :3p 0.24715233126107372, :team \&quot;Golden State Warriors\&quot;, :st 0.11643766907765896, :ft -0.00750595042144564, :dr 0.29001190320323555, :bs 0.1760502008866499, :fta -0.04216871230283514, :home-team \&quot;Golden State Warriors\&quot;, :to 0.17605870139675328}))&quot;, :offset 546, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/create-predictions data)&quot;, :offset 29, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn contains-keys? [coll keys]\n  (cond (empty? keys) true\n        (contains? coll (first keys)) (contains-keys? coll (rest keys))\n        :else false))&quot;, :offset 153, :ns &quot;sportseer-client.core&quot;} {:command &quot;(contains-keys? (first data) (map keyword (:data-columns model)))&quot;, :offset 65, :ns &quot;sportseer-client.core&quot;} {:command &quot;(not (contains-keys? (first data) (map keyword (:data-columns model))))&quot;, :offset 71, :ns &quot;sportseer-client.core&quot;} {:command &quot;(:data-columns model)&quot;, :offset 21, :ns &quot;sportseer-client.core&quot;} {:command &quot;(keys (first data))&quot;, :offset 19, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/create-predictions data model)&quot;, :offset 35, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data2 (if (string? data) (mac/import-csv data) data))&quot;, :offset 58, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map keyword (:data-columns model))&quot;, :offset 35, :ns &quot;sportseer-client.core&quot;} {:command &quot;(not (contains-keys? (first data2) (map keyword (:data-columns model))))&quot;, :offset 72, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))]\n  (do (print combined-data)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions combined-data model))))))&quot;, :offset 430, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (into [] (dat/combine-match-data\n                               (dat/aggregate-players csv-data aggr-fn)))]\n  (do (print combined-data)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions combined-data model))))))&quot;, :offset 449, :ns &quot;sportseer-client.core&quot;} {:command &quot;data&quot;, :offset 4, :ns &quot;sportseer-client.core&quot;} {:command &quot;(select-keys data (:data-columns model))&quot;, :offset 40, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map (select-keys % (:data-columns model)) data)&quot;, :offset 48, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(select-keys % (:data-columns model)) data)&quot;, :offset 49, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(select-keys % (map keyword (:data-columns model)) data))&quot;, :offset 63, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(select-keys % (map keyword (:data-columns model))) data)&quot;, :offset 63, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data2 (map #(select-keys % (map keyword (:data-columns model))) data))&quot;, :offset 75, :ns &quot;sportseer-client.core&quot;} {:command &quot;data2&quot;, :offset 5, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/make-prediction model (into [] data2))&quot;, :offset 43, :ns &quot;sportseer-client.core&quot;} {:command &quot;(concat \&quot;1\&quot; \&quot;3\&quot;)&quot;, :offset 16, :ns &quot;sportseer-client.core&quot;} {:command &quot;(merge [2] [31])&quot;, :offset 16, :ns &quot;sportseer-client.core&quot;} {:command &quot;(concat [2] [31])&quot;, :offset 17, :ns &quot;sportseer-client.core&quot;} {:command &quot;(concat [2] (concat [31] [21]))&quot;, :offset 31, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/make-prediction (:model model) (into [] data2))&quot;, :offset 52, :ns &quot;sportseer-client.core&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1556796834680">{:repl-history {:ide [], :local [{:command &quot;\n(defn merge-manual-selections [home-data away-data columns]\n  (let [column (keyword (first columns))]\n    (do (print column)\n        (print home-data)\n        (print away-data)\n        (if (= 1 (count columns))\n          (assoc {} column (- (column home-data) (column away-data)))\n          (merge (assoc {} column (- (column home-data) (column away-data)))\n                 (merge-manual-selections home-data away-data (rest columns)))))))&quot;, :offset 441, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn prepare-manual-selections\n  ([columns]\n   (let [selections (get-manual-selection-nodes columns)\n         columns (drop-last columns)\n         home-data (first (prepare-manual-selections (:home selections) columns))\n         away-data (first (prepare-manual-selections (:away selections) columns))\n         merged-data (merge-manual-selections home-data away-data columns)]\n     (map #((keyword %) merged-data) columns)))\n  ([selections columns]\n   (if (= 1 (count selections))\n     (map #(dissoc % :AVG) selections)\n     (let [selections (dat/aggr-minutes (map #(dissoc (assoc % :min (:AVG %)) :AVG) selections))]\n       (if (contains? columns \&quot;min\&quot;) (map #(dissoc % :min) selections) selections)))))&quot;, :offset 706, :ns &quot;sportseer-client.core&quot;} {:command &quot;model&quot;, :offset 5, :ns &quot;sportseer-client.core&quot;} {:command &quot;(keys model)&quot;, :offset 12, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % columns))) combined-data)]\n  (do (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 382, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % (:data-columns model))))\n                   combined-data)]\n  (do (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 527, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % (:data-columns model))))\n                   combined-data)]\n  (do (print combined-data) (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 549, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))\n      dataset (map #(into [] (vals (select-keys % (map keyword (:data-columns model)))))\n                   combined-data)]\n  (do (print combined-data) (print dataset)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions dataset model))))))&quot;, :offset 563, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data ({:min 0.9513291788246505, :date \&quot;26/4/2019\&quot;, :pf -0.0019350252090295506, :fg 0.5150915008199402, :reb 0.2923881821640024, :or 0.014864301076547237, :time \&quot;10:00\&quot;, :pts 1.2389856679555544, :ast 0.5924082768537147, :3pa 0.5682397810819955, :fga 0.8438201364503168, :away-team \&quot;LA Clippers\&quot;, :3p 0.24715233126107372, :team \&quot;Golden State Warriors\&quot;, :st 0.11643766907765896, :ft -0.00750595042144564, :dr 0.29001190320323555, :bs 0.1760502008866499, :fta -0.04216871230283514, :home-team \&quot;Golden State Warriors\&quot;, :to 0.17605870139675328}))&quot;, :offset 545, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data '({:min 0.9513291788246505, :date \&quot;26/4/2019\&quot;, :pf -0.0019350252090295506, :fg 0.5150915008199402, :reb 0.2923881821640024, :or 0.014864301076547237, :time \&quot;10:00\&quot;, :pts 1.2389856679555544, :ast 0.5924082768537147, :3pa 0.5682397810819955, :fga 0.8438201364503168, :away-team \&quot;LA Clippers\&quot;, :3p 0.24715233126107372, :team \&quot;Golden State Warriors\&quot;, :st 0.11643766907765896, :ft -0.00750595042144564, :dr 0.29001190320323555, :bs 0.1760502008866499, :fta -0.04216871230283514, :home-team \&quot;Golden State Warriors\&quot;, :to 0.17605870139675328}))&quot;, :offset 546, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/create-predictions data)&quot;, :offset 29, :ns &quot;sportseer-client.core&quot;} {:command &quot;(defn contains-keys? [coll keys]\n  (cond (empty? keys) true\n        (contains? coll (first keys)) (contains-keys? coll (rest keys))\n        :else false))&quot;, :offset 153, :ns &quot;sportseer-client.core&quot;} {:command &quot;(contains-keys? (first data) (map keyword (:data-columns model)))&quot;, :offset 65, :ns &quot;sportseer-client.core&quot;} {:command &quot;(not (contains-keys? (first data) (map keyword (:data-columns model))))&quot;, :offset 71, :ns &quot;sportseer-client.core&quot;} {:command &quot;(keys (first data))&quot;, :offset 19, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/create-predictions data model)&quot;, :offset 35, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data2 (if (string? data) (mac/import-csv data) data))&quot;, :offset 58, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map keyword (:data-columns model))&quot;, :offset 35, :ns &quot;sportseer-client.core&quot;} {:command &quot;(not (contains-keys? (first data2) (map keyword (:data-columns model))))&quot;, :offset 72, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (dat/combine-match-data\n                      (dat/aggregate-players csv-data aggr-fn))]\n  (do (print combined-data)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions combined-data model))))))&quot;, :offset 430, :ns &quot;sportseer-client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (into [] (dat/combine-match-data\n                               (dat/aggregate-players csv-data aggr-fn)))]\n  (do (print combined-data)\n      (change-menu\n        (prediction-menu (results-page (mac/create-predictions combined-data model))))))&quot;, :offset 449, :ns &quot;sportseer-client.core&quot;} {:command &quot;data&quot;, :offset 4, :ns &quot;sportseer-client.core&quot;} {:command &quot;(select-keys data (:data-columns model))&quot;, :offset 40, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map (select-keys % (:data-columns model)) data)&quot;, :offset 48, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(select-keys % (:data-columns model)) data)&quot;, :offset 49, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(select-keys % (map keyword (:data-columns model)) data))&quot;, :offset 63, :ns &quot;sportseer-client.core&quot;} {:command &quot;(map #(select-keys % (map keyword (:data-columns model))) data)&quot;, :offset 63, :ns &quot;sportseer-client.core&quot;} {:command &quot;(def data2 (map #(select-keys % (map keyword (:data-columns model))) data))&quot;, :offset 75, :ns &quot;sportseer-client.core&quot;} {:command &quot;data2&quot;, :offset 5, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/make-prediction model (into [] data2))&quot;, :offset 43, :ns &quot;sportseer-client.core&quot;} {:command &quot;(concat \&quot;1\&quot; \&quot;3\&quot;)&quot;, :offset 16, :ns &quot;sportseer-client.core&quot;} {:command &quot;(merge [2] [31])&quot;, :offset 16, :ns &quot;sportseer-client.core&quot;} {:command &quot;(concat [2] [31])&quot;, :offset 17, :ns &quot;sportseer-client.core&quot;} {:command &quot;(concat [2] (concat [31] [21]))&quot;, :offset 31, :ns &quot;sportseer-client.core&quot;} {:command &quot;(mac/make-prediction (:model model) (into [] data2))&quot;, :offset 52, :ns &quot;sportseer-client.core&quot;} {:command &quot;(config! f :resizable? true)&quot;, :offset 28, :ns &quot;sportseer_client.core&quot;} {:command &quot;(+ 1 2)&quot;, :offset 7, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/load-model \&quot;models/Model.nippy\&quot;)&quot;, :offset 37, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/load-model \&quot;data/models/Model.nippy\&quot;)&quot;, :offset 42, :ns &quot;sportseer_client.core&quot;} {:command &quot;(get-manual-selection-nodes (:columns model))&quot;, :offset 45, :ns &quot;sportseer_client.core&quot;} {:command &quot;(:columns model)&quot;, :offset 16, :ns &quot;sportseer_client.core&quot;} {:command &quot;(prepare-manual-selections (:data-columns model))&quot;, :offset 49, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/make-prediction (:model model) (into [] (prepare-manual-selections (:data-columns model))))&quot;, :offset 96, :ns &quot;sportseer_client.core&quot;} {:command &quot;(get-manual-selection-nodes (:data-columns model))&quot;, :offset 50, :ns &quot;sportseer_client.core&quot;} {:command &quot;(:data-columns model)&quot;, :offset 21, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (into [] (prepare-manual-selections (:data-columns model))))&quot;, :offset 67, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (:data-columns model))&quot;, :offset 29, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (keys (:away (get-manual-selection-nodes (:data-columns model)))))&quot;, :offset 73, :ns &quot;sportseer_client.core&quot;} {:command &quot;(:away (get-manual-selection-nodes (:data-columns model)))&quot;, :offset 58, :ns &quot;sportseer_client.core&quot;} {:command &quot;(first (:away (get-manual-selection-nodes (:data-columns model))))&quot;, :offset 66, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (keys (first (:away (get-manual-selection-nodes (:data-columns model))))))&quot;, :offset 81, :ns &quot;sportseer_client.core&quot;} {:command &quot;(into [] (prepare-manual-selections (:data-columns model)))&quot;, :offset 59, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def selections (get-manual-selection-nodes (:columns model)))&quot;, :offset 62, :ns &quot;sportseer_client.core&quot;} {:command &quot;(prepare-manual-selections (:home selections) (:data-columns model))&quot;, :offset 68, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def away-data (prepare-manual-selections (:home selections) (:data-columns model)))&quot;, :offset 84, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def home-data (prepare-manual-selections (:home selections) (:data-columns model)))&quot;, :offset 84, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def away-data (prepare-manual-selections (:away selections) (:data-columns model)))&quot;, :offset 84, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def merged-data (merge-manual-selections home-data away-data (:data-columns) model))&quot;, :offset 85, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def merged-data (merge-manual-selections home-data away-data (:data-columns model)))&quot;, :offset 85, :ns &quot;sportseer_client.core&quot;} {:command &quot;home-data&quot;, :offset 9, :ns &quot;sportseer_client.core&quot;} {:command &quot;away-data&quot;, :offset 9, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def merged-data (merge-manual-selections (first home-data ) (first away-data)\n                                          (:data-columns model)))&quot;, :offset 144, :ns &quot;sportseer_client.core&quot;} {:command &quot;merged-data&quot;, :offset 11, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def selections (get-manual-selection-nodes (:data-columns model)))&quot;, :offset 67, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def columns (conj (into [] (:data-columns model) \&quot;AVG\&quot;)))&quot;, :offset 58, :ns &quot;sportseer_client.core&quot;} {:command &quot;(into [] columns)&quot;, :offset 17, :ns &quot;sportseer_client.core&quot;} {:command &quot;(get-manual-selection-nodes)&quot;, :offset 28, :ns &quot;sportseer_client.core&quot;} {:command &quot;(get-manual-selection-nodes columns)&quot;, :offset 36, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def columns (conj (:data-columns model) \&quot;AVG\&quot;))&quot;, :offset 48, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count columns)&quot;, :offset 15, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/make-prediction (:model) (prepare-manual-selections columns))&quot;, :offset 66, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/make-prediction (:model model) (prepare-manual-selections columns))&quot;, :offset 72, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def model-columns (:columns model))&quot;, :offset 36, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def columns (conj (into [] (:columns model))) \&quot;AVG\&quot;)&quot;, :offset 53, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def columns (conj (into [] (:columns model)) \&quot;AVG\&quot;))&quot;, :offset 53, :ns &quot;sportseer_client.core&quot;} {:command &quot;columns&quot;, :offset 7, :ns &quot;sportseer_client.core&quot;} {:command &quot;model-columns&quot;, :offset 13, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count model-columns)&quot;, :offset 21, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (prepare-manual-selections columns))&quot;, :offset 43, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def model (mac/load-model \&quot;data/models/Model.nippy\&quot;))&quot;, :offset 54, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def model-columns (:data-columns model))&quot;, :offset 41, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def columns (conj (into [] (:data-columns model)) \&quot;AVG\&quot;))&quot;, :offset 58, :ns &quot;sportseer_client.core&quot;} {:command &quot;(prepare-manual-selections columns)&quot;, :offset 35, :ns &quot;sportseer_client.core&quot;} {:command &quot;(defn prepare-manual-selections\n  ([columns]\n   (let [selections (get-manual-selection-nodes columns)\n         home-data (first (prepare-manual-selections (:home selections) columns))\n         away-data (first (prepare-manual-selections (:away selections) columns))\n         columns (drop-last columns)]\n     (merge-manual-selections home-data away-data columns)))\n  ([selections columns]\n   (if (= 1 (count selections)) (map #(dissoc % :AVG) selections)\n                                (let [selections (dat/aggr-minutes (map #(dissoc (assoc % :min (:AVG %)) :AVG) selections))]\n                                  (if (contains? columns \&quot;min\&quot;) (map #(dissoc % :min) selections) selections)))))&quot;, :offset 693, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def selections (prepare-manual-selections columns))&quot;, :offset 52, :ns &quot;sportseer_client.core&quot;} {:command &quot;selections&quot;, :offset 10, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (keys selections))&quot;, :offset 25, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/create-predictions (vector selections) (:model model))&quot;, :offset 59, :ns &quot;sportseer_client.core&quot;} {:command &quot;(vector selections)&quot;, :offset 19, :ns &quot;sportseer_client.core&quot;} {:command &quot;(let [csv-data (dat/import-csv (selection (select f [:#stats-selector])))\n      aggr-fn (if (some #(= :min %) (keys (first csv-data)))\n                dat/aggr-minutes dat/aggr-average)\n      combined-data (into [] (dat/combine-match-data\n                               (dat/aggregate-players csv-data aggr-fn)))]\n  (change-menu\n    (prediction-menu (results-page (mac/create-predictions combined-data model)))))&quot;, :offset 412, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def csv-data (dat/import-csv (selection (select f [:#stats-selector]))))&quot;, :offset 73, :ns &quot;sportseer_client.core&quot;} {:command &quot;(def combined-data (into [] (dat/combine-match-data (dat/aggregate-players csv-data dat/aggr-minutes))))&quot;, :offset 104, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count combined-data)&quot;, :offset 21, :ns &quot;sportseer_client.core&quot;} {:command &quot;(count (first combined-data))&quot;, :offset 29, :ns &quot;sportseer_client.core&quot;} {:command &quot;combined-data&quot;, :offset 13, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/create-predictions combined-data (:model model))&quot;, :offset 53, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/create-predictions combined-data model)&quot;, :offset 44, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/create-predictions selections model)&quot;, :offset 41, :ns &quot;sportseer_client.core&quot;} {:command &quot;(mac/create-predictions (vector selections) model)&quot;, :offset 50, :ns &quot;sportseer_client.core&quot;} {:command &quot;(-main)&quot;, :offset 7, :ns &quot;sportseer_client.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -154,7 +180,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Clojure REPL.nREPL">
     <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <setting name="replType" value="NREPL" />
       <setting name="execution" value="LEININGEN" />
@@ -174,7 +200,7 @@
       <method v="2" />
     </configuration>
     <configuration name="nREPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
-      <module name="sportseer-client" />
+      <module name="sportseer_client" />
       <setting name="replType" value="NREPL" />
       <setting name="execution" value="LEININGEN" />
       <setting name="jvmArgs" value="" />
@@ -184,6 +210,23 @@
       <setting name="aliases" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="sportseer-client.core" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
+      <module name="sportseer_client" />
+      <setting name="path" value="" />
+      <setting name="namespace" value="sportseer-client.core" />
+      <setting name="execution" value="INTELLIJ" />
+      <setting name="profiles" value="" />
+      <setting name="aliases" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Clojure Application.sportseer-client.core" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -199,10 +242,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1050" extended-state="6" />
+    <frame x="0" y="-1" width="1920" height="1050" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16168623" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18303095" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -210,23 +253,24 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32901832" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25350595" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24703345" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.13700108" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32901832" />
       <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49892008" weight="0.24932003" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Maven" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info active="true" anchor="right" id="REPL" order="6" sideWeight="0.8360302" side_tool="true" visible="true" weight="0.3335112" />
-      <window_info anchor="right" id="Leiningen" order="7" sideWeight="0.1639698" visible="true" weight="0.3335112" />
+      <window_info anchor="right" id="REPL" order="6" sideWeight="0.8392665" side_tool="true" weight="0.31323373" />
+      <window_info anchor="right" id="Leiningen" order="7" sideWeight="0.16073355" visible="true" weight="0.31323373" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
     </layout>
@@ -272,13 +316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/seesaw/seesaw/1.4.5/seesaw-1.4.5.jar!/seesaw/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16125">
-          <caret line="1075" selection-start-line="1075" selection-end-line="1075" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/thinktopic/experiment/0.9.22/experiment-0.9.22.jar!/cortex/experiment/train.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -293,27 +330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sportseer_client/scraper.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4995">
-          <caret line="333" column="13" selection-start-line="333" selection-start-column="13" selection-end-line="333" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sportseer_client/dataset_creator.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="311" column="29" selection-start-line="311" selection-start-column="29" selection-end-line="311" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/lang/RestFn.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -321,17 +337,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sportseer_client/machine_learning.clj">
+    <entry file="file://$PROJECT_DIR$/src/sportseer_client/csv_helpers.clj" />
+    <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="289" column="53" lean-forward="true" selection-start-line="289" selection-start-column="53" selection-end-line="289" selection-end-column="53" />
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/seesaw/seesaw/1.4.5/seesaw-1.4.5.jar!/seesaw/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="3511" selection-start-line="3511" selection-end-line="3511" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sportseer_client/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="441" column="56" lean-forward="true" selection-start-line="441" selection-start-column="56" selection-end-line="441" selection-end-column="56" />
+        <state relative-caret-position="633">
+          <caret line="47" column="100" selection-start-line="47" selection-start-column="100" selection-end-line="47" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/thinktopic/cortex/0.9.22/cortex-0.9.22.jar!/cortex/nn/execute.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sportseer_client/machine_learning.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="146" column="27" selection-start-line="146" selection-start-column="27" selection-end-line="146" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sportseer_client/dataset_creator.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="291" column="33" lean-forward="true" selection-start-line="291" selection-start-column="33" selection-end-line="291" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sportseer_client/scraper.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="83" selection-start-line="83" selection-end-line="96" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -341,10 +400,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>SPORTSEER Client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3137931" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -376,7 +437,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>1.8 (4)</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -388,7 +449,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>sportseer-client</last-edited>
+          <last-edited>sportseer_client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -405,7 +466,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3137931" />
               </list>
             </option>
           </splitter-proportions>

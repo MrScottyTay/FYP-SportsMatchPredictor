@@ -1,4 +1,4 @@
-(ns sportseer-client.machine-learning
+(ns sportseer_client.machine_learning
   (:require [clojure.data.csv]
             [cortex.experiment.train :as train]
             [cortex.experiment.util :as experiment.util]
@@ -30,12 +30,9 @@
    (layers/linear 2)
    (layers/softmax :id :label)])
 
-(def layers-list ^:const [{:name "ReLU" :layer layers/relu}
-                          {:name "Linear->ReLU" :layer layers/linear->relu}
-                          {:name "Dropout" :layer layers/dropout}
-                          {:name "Linear" :layer layers/linear}
-                          {:name "Tanh" :layer layers/tanh}
-                          {:name "Linear->Tanh" :layer layers/linear->tanh}
+(def layers-list ^:const [{:name "ReLU" :layer layers/relu}       {:name "Linear->ReLU" :layer layers/linear->relu}
+                          {:name "Dropout" :layer layers/dropout} {:name "Linear" :layer layers/linear}
+                          {:name "Tanh" :layer layers/tanh}       {:name "Linear->Tanh" :layer layers/linear->tanh}
                           {:name "Logistic Regression" :layer layers/logistic}
                           {:name "Linear->Logistic Regression" :layer layers/linear->logistic}])
 
@@ -84,10 +81,6 @@
   [coll elm]
   (some #(= elm %) coll))
 
-;; Removes non player stat keywords (:player, :team, :result etc.)
-(defn remove-non-stat-keys [input]
-  (remove (fn [x] (.contains non-player-stats-columns x)) input))
-
 (defn get-percentage-of [high low]
   (* (/ high 100) low))
 
@@ -116,33 +109,28 @@
 
 (defn csv-str->type
   ([csv-data]
-   (if (< 100 (count csv-data))
-     (csv-str->type-partitioned csv-data)
+   (if (< 100 (count csv-data)) (csv-str->type-partitioned csv-data)
      (csv-str->type csv-data (keys (first csv-data)) [])))
   ([rows-waiting columns rows-processed]
-   (if (empty? rows-waiting)
-     rows-processed
+   (if (empty? rows-waiting) rows-processed
      (csv-str->type (rest rows-waiting) columns (conj rows-processed (csv-str->type (first rows-waiting) columns)))))
   ([row columns]
    (if (empty? columns) row
-                        (let [column (first columns)
-                              column-data (column row)]
-                          (cond
-                            (and (not (date-or-time? column-data)) (number? (read-string column-data)))
-                            (csv-str->type (assoc row column (read-string column-data)) (rest columns))
+     (let [column (first columns)
+           column-data (column row)]
+       (cond
+         (and (not (date-or-time? column-data)) (number? (read-string column-data)))
+         (csv-str->type (assoc row column (read-string column-data)) (rest columns))
 
-                            (= column-data "") (csv-str->type (assoc row column 0) (rest columns))
-                            (= column-data "true") (csv-str->type (assoc row column 1) (rest columns))
-                            (= column-data "false") (csv-str->type (assoc row column 0) (rest columns))
-                            :else (csv-str->type row (rest columns)))))))
+         (= column-data "") (csv-str->type (assoc row column 0) (rest columns))
+         (= column-data "true") (csv-str->type (assoc row column 1) (rest columns))
+         (= column-data "false") (csv-str->type (assoc row column 0) (rest columns))
+         :else (csv-str->type row (rest columns)))))))
 
 (defn csv-str->type-partitioned [csv-data]
   (flatten (map csv-str->type (partition 100 100 nil csv-data))))
 
 (defn import-csv [csv-file-name] (csv-str->type (read-csv csv-file-name)))
-
-#_(def csv-data (csv-str->type (read-csv "nba-13-18_prior-averages_mins-aggr.csv")))
-#_(def csv-data2 (csv-str->type (read-csv "nba-17-18_prior-averages-m0_unbiased-aggr.csv")))
 
 ;; _____________________________________________________________________________________________________________________
 ;; Dataset Initialiser
@@ -166,8 +154,7 @@
    (let [testing-indices (get-training-testing-indices total testing-size [])]
      (vector (into [](remove (partial in? testing-indices) (range total))) testing-indices)))
   ([total training-size indices]
-   (if (= (count indices) training-size)
-     indices
+   (if (= (count indices) training-size) indices
      (let [number (rand-int total)]
        (if (in? indices number) (get-training-testing-indices total training-size indices)
                                 (get-training-testing-indices total training-size (conj indices number)))))))
@@ -177,7 +164,7 @@
   ([data indices] (get-data-by-indices data indices []))
   ([data indices output]
    (if (empty? indices) output
-                        (get-data-by-indices data (rest indices) (conj output (nth data (first indices)))))))
+     (get-data-by-indices data (rest indices) (conj output (nth data (first indices)))))))
 
 ;; splits dataset up into training and testing sets, percentage given is the size of the testing set
 (defn split-dataset-random [data percentage]
@@ -202,15 +189,13 @@
 (defn split-csv
   ([data parts-count]
    (let [data-size (count data)
-         partition-size (+ (int (/ data-size parts-count)) 1)] ; 1 is added because int always rounds down on fractions
+         partition-size (+ (int (/ data-size parts-count)) 1)] ; 1 is added because int always rounds down fractions
      (partition partition-size partition-size nil data))))
 
 (defn partitioned-initialise-dataset
-  ([csv-parts data-columns label-column]
-   (flatten (partitioned-initialise-dataset csv-parts data-columns label-column [])))
+  ([csv-parts data-columns label-column] (flatten (partitioned-initialise-dataset csv-parts data-columns label-column [])))
   ([csv-parts data-columns label-column output]
-   (if (empty? csv-parts)
-     output
+   (if (empty? csv-parts) output
      (partitioned-initialise-dataset (rest csv-parts) data-columns label-column
                                      (conj output (initialise-dataset (first csv-parts) data-columns label-column))))))
 
@@ -221,19 +206,14 @@
    (split-algorithm (partitioned-initialise-dataset (split-csv csv-data 10) data-columns label-column)
                     training-percentage)))
 
-#_(def dataset (create-dataset csv-data 20))
-
 ;; _____________________________________________________________________________________________________________________
 ;; Neural Network Declaration and Training
 
 (defn insert-default-params
-  ([params]
-   (if (or (empty? params) (nil? params))
-     default-network-params
-     (insert-default-params params (keys default-network-params))))
+  ([params] (if (or (empty? params) (nil? params)) default-network-params
+              (insert-default-params params (keys default-network-params))))
   ([params param-keys]
-   (if (empty? param-keys)
-     params
+   (if (empty? param-keys) params
      (let [current-key (first param-keys)]
        (if (nil? (current-key params))
          (insert-default-params (assoc params current-key (current-key default-network-params)) (rest param-keys))
@@ -264,24 +244,25 @@
   (let [file-name (str (:name model-node) ".nippy")]
     (nippy/freeze-to-file (create-path ["data" "models" file-name]) model-node)))
 
-(defn load-model [file-name]
-  (nippy/thaw-from-file file-name))
+(defn load-model [file-name] (nippy/thaw-from-file file-name))
 
-(defn best-result [[false-score true-score]]
-  (> true-score false-score))
+(defn best-result [[false-score true-score]] (> true-score false-score))
 
+; calculates the difference between the two probabilities to give a confidence score
 (defn confidence-result [[false-score true-score]]
   (let [home-win? (best-result [false-score true-score])]
     (if home-win?
       (* (- true-score false-score) 100)
       (* (- false-score true-score) 100))))
 
+; makes a single prediction
 (defn make-prediction [model stats]
-  (do (let [stats (if (vector? (first stats)) stats (vector stats))
-            result (:label (first (execute/run model (map #(assoc {} :data %) stats))))]
-          (assoc {} :home-win (second result) :away-win (first result)
-                    :home-win? (best-result result) :confidence (confidence-result result)))))
+  (let [stats (if (vector? (first stats)) stats (vector stats))
+        result (:label (first (execute/run model (map #(assoc {} :data %) stats))))]
+      (assoc {} :home-win (second result) :away-win (first result)
+                :home-win? (best-result result) :confidence (confidence-result result))))
 
+; makes one or more predictions and returns the results
 (defn create-predictions [csv-data model]
   (let [csv-data (if (string? csv-data) (import-csv csv-data) csv-data)
         data-columns (map keyword (:data-columns model))]
@@ -290,8 +271,7 @@
       (map #(let [stats (map->vector % data-columns)]
               (merge (assoc {} :stats stats) (make-prediction (:model model) stats))) csv-data))))
 
-#_(def model (train dataset network-description network-params))
-
+; tests a model against a testing set to see how accurate it is
 (defn test-model
   ([model testing-dataset] (test-model (execute/run model testing-dataset) testing-dataset 0 []))
   ([results testing-dataset current-index test-results]
@@ -299,8 +279,9 @@
      test-results
      (let [current-result (:label (nth results current-index))
            current-result-best (best-result current-result)
-           current-testing (best-result (:label (nth results current-index)))]
+           current-testing (best-result (:label (nth results current-index)))
+           confidence (confidence-result current-result)]
        (test-model results testing-dataset (inc current-index)
                    (conj test-results (assoc {} :prediction (assoc {} :scores current-result :best current-result-best)
-                                                :actual current-testing :correct (= current-result-best current-testing))))))))
-
+                                                :actual current-testing :correct (= current-result-best current-testing)
+                                                :confidence confidence)))))))
